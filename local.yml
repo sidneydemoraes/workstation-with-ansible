@@ -1,0 +1,25 @@
+# Ansible playbook to setup my workstation
+# Last update: 2021.11.22 17.33
+- hosts: all
+  become: true
+
+  pre_tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+      changed_when: false
+
+
+# Clean Up
+- hosts: all
+  become: true
+  tasks:
+    - name: cleanup cache
+      apt:
+        autoclean: true
+      changed_when: false
+
+    - name: autoremove orphan packages
+      apt:
+        autoremove: true
+        purge: true
+      changed_when: false
