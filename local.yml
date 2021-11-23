@@ -8,6 +8,13 @@
       apt: update_cache=yes
       changed_when: false
 
+  tasks:
+    # setup users
+    # - include: users/ansible.yml
+
+    # install packages
+    - include: packages/base.yml
+
 
 # Clean Up
 - hosts: all
