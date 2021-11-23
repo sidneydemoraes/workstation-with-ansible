@@ -1,0 +1,9 @@
+- name: Install base packages
+  become: true
+  apt: 
+    name: {{ item }} 
+    state: latest
+  with_items:
+    - atop
+    - curl
+    - git
