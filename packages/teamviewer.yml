@@ -1,0 +1,12 @@
+- name: "Download TeamViewer installer"
+  get-url: url={{ teamviewer_url }} dest={{ tmp_dir }}
+
+- name: "Install TeamViewer"
+  become: true
+  apt: deb={{ teamviewer_file }}
+
+- name: "Remove .deb file"
+  file:
+    path: "{{ teaviewer_file }}"
+    state: absent
+
