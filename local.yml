@@ -14,6 +14,7 @@
 
     # install packages
     - include: packages/apt.yml
+    - include: packages/libreoffice.yml
 
 
 # Clean Up
