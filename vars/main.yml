@@ -1,0 +1,2 @@
+localwp_version: "6.1.7"
+localwp_build: "{{ localwp_version }}+5610"
