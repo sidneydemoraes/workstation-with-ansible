@@ -3,10 +3,18 @@
 - hosts: all
   become: true
 
+  vars_files:
+    - vars/main.yml
+
   pre_tasks:
-    - name: update apt cache
+    - name: "Update apt cache"
       apt: update_cache=yes
       changed_when: false
+
+    - name: "Create temp dir"
+      file:
+        path: "{{ tmp_dir }}"
+        state: present
 
   tasks:
     # setup users
@@ -21,12 +29,12 @@
 - hosts: all
   become: true
   tasks:
-    - name: cleanup cache
+    - name: "Cleanup cache"
       apt:
         autoclean: true
       changed_when: false
 
-    - name: autoremove orphan packages
+    - name: "Autoremove orphan packages"
       apt:
         autoremove: true
         purge: true
