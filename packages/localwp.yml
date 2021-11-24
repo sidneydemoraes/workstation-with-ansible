@@ -1,0 +1,13 @@
+
+- name: Download localwp
+  get_url: url={{ localwp_url }} dest={{ tmp_dir }}
+
+- name: Install Latest LibreOffice
+  become: true
+  apt: deb={{ tmp_dir }}/{{ localwp_file }}
+
+- name: "Remove .deb file"
+  file:
+    path: "{{ tmp_dir }}/{{ localwp_file }}"
+    state: absent
+

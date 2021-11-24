@@ -24,6 +24,9 @@
     - include: packages/apt.yml
     - include: packages/libreoffice.yml
 
+    # development
+    - include: packages/localwp.yml
+
 
 # Clean Up
 - hosts: all

@@ -1,2 +1,6 @@
+tmp_dir: "/home/sid/tmp"
+
 localwp_version: "6.1.7"
 localwp_build: "{{ localwp_version }}+5610"
+localwp_file: "local-{{ localwp_version  }}-linux.deb"
+localwp_url: "https://cdn.localwp.com/releases-stable/{{ localwp_build }}/{{ localwp_file }}"
