@@ -1,3 +1,11 @@
+- name: "Add Universe Repository"
+  become: true
+  apt_repository: 
+    repo: universe
+    state: present
+    update_cache: true
+    validate_certs: false
+
 - name: Install base apt packages
   become: true
   apt: 
@@ -7,3 +15,6 @@
     - atop
     - curl
     - git
+    - p7zip-full
+    - p7zip-rar
+    - p7zip-desktop
