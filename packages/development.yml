@@ -1,9 +1,8 @@
 - name: Install apt packages for development
-  become: true
+  become: yes
   apt: 
     name: {{ item }} 
     state: latest
   with_items:
-    - vim
     - tmux
     - tmate

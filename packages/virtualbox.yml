@@ -1,20 +1,20 @@
-- name: "Add Virtualbox repository key"
-  become: true
+- name: Add Virtualbox repository key
+  become: yes
   apt_key:
     url: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
     state: present
 
-- name: "Add Virtualbox repository"
-  become: true
-  gather_facts: true
+- name: Add Virtualbox repository
+  become: yes
+  gather_facts: yes
   apt_repository:
     repo: "https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
     state: present
 
-- name: "Install Virtualbox"
-  become: true
+- name: Install Virtualbox
+  become: yes
   apt:
-    update_cache: true
+    update_cache: yes
     name: "virtualbox-{{ virtualbox_version }}"
     state: latest
-    autoclean: true
+    autoclean: yes

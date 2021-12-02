@@ -1,13 +1,13 @@
 - name: Add LibreOffice Official PPA
-  become: true
+  become: yes
   apt_repository: 
     repo: ppa:libreoffice/ppa
     state: present
-    update_cache: true
-    validate_certs: false
+    update_cache: yes
+    validate_certs: no
 
 - name: Install Latest LibreOffice
-  become: true
+  become: yes
   apt:
     name: libreoffice
     state: latest

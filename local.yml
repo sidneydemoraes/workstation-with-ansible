@@ -1,17 +1,18 @@
 # Ansible playbook to setup my workstation
 # Last update: 2021.11.22 17.33
 - hosts: all
-  become: true
+  become: yes
 
   vars_files:
     - vars/main.yml
 
   pre_tasks:
-    - name: "Update apt cache"
-      apt: update_cache=yes
-      changed_when: false
+    - name: Update apt cache
+      apt: 
+        update_cache: yes
+      changed_when: no
 
-    - name: "Create temp dir"
+    - name: Create temp dir
       file:
         path: "{{ tmp_dir }}"
         state: present
@@ -20,25 +21,38 @@
     # setup users
     # - include: users/ansible.yml
 
-    # install packages
-    - include: packages/apt.yml
-    - include: packages/libreoffice.yml
+    - name: Include default packages
+      include_tasks: packages/apt.yml
+      tags: default
 
-    # development
-    - include: packages/localwp.yml
+    - name: Include LibreOffice installation
+      include_tasks: packages/libreoffice.yml
+      tags: libreoffice
+
+    - name: Include Browser installation
+      include_tasks: packages/browser.yml
+      tags: browsers
+
+    - name: Include default development softwares installation
+      include_tasks: packages/development.yml
+      tags: development
+
+    - name: Include LocalWP installation
+      include_tasks: packages/localwp.yml
+      tags: localwp
 
 
 # Clean Up
 - hosts: all
-  become: true
+  become: yes
   tasks:
-    - name: "Cleanup cache"
+    - name: Cleanup cache
       apt:
-        autoclean: true
-      changed_when: false
+        autoclean: yes
+      changed_when: no
 
-    - name: "Autoremove orphan packages"
+    - name: Autoremove orphan packages
       apt:
-        autoremove: true
-        purge: true
-      changed_when: false
+        autoremove: yes
+        purge: yes
+      changed_when: no

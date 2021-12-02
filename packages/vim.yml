@@ -1,6 +1,6 @@
 - name: Install Neovim
   tags: vim
-  become: true
+  become: yes
   apt: 
     name: {{ item }} 
     state: latest

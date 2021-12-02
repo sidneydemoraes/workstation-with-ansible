@@ -1,15 +1,17 @@
-- name: "Add Universe Repository"
-  become: true
+- name: Add Universe Repository
+  tags: default
+  become: yes
   apt_repository: 
     repo: universe
     state: present
-    update_cache: true
-    validate_certs: false
+    update_cache: yes
+    validate_certs: no
 
 - name: Install base apt packages
-  become: true
+  tags: default
+  become: yes
   apt: 
-    name: {{ item }} 
+    name: "{{ item }}"
     state: latest
   with_items:
     - software-properties-common

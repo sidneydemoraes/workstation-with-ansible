@@ -1,11 +1,13 @@
-- name: "Download Vivaldi Browser installer"
-  get-url: url={{ vivaldi_browser_url }} dest={{ tmp_dir }}
+- name: Download Vivaldi Browser installer
+  get-url: 
+    url: "{{ vivaldi_browser_url }}"
+    dest: "{{ tmp_dir }}"
 
-- name: "Install Vivaldi Browser"
-  become: true
+- name: Install Vivaldi Browser
+  become: yes
   apt: deb={{ vivaldi_browser_file }}
 
-- name: "Remove .deb file"
+- name: Remove .deb file
   file:
     path: "{{ vivaldi_browser_file }}"
     state: absent
