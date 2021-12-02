@@ -19,3 +19,30 @@
     state: latest
     install_recommends: true
     autoclean: true
+
+- name: "Remove outdated version of Winetricks"
+  become: true
+  apt:
+    name: "winetricks"
+    state: absent
+    purge: true
+
+- name: "Download updated Winetricks installer"
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
+    dest: "/usr/bin/local"
+    mode: "0754"
+
+- name: "Download Winetricks bash completion"
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion"
+    dest: "/usr/share/bash-completion/completions/winetricks"
+    force: true
+
+- name: "Download Winetrics man pages"
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.1"
+    dest: "/usr/share/man/man1"
