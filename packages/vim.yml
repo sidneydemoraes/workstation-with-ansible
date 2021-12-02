@@ -1,0 +1,17 @@
+- name: Install Neovim
+  tags: vim
+  become: true
+  apt: 
+    name: {{ item }} 
+    state: latest
+  with_items:
+    - neovim
+    - python-neovim
+    - python3-neovim
+
+- name: Copy configuration file
+  tags: vim
+  copy:
+    src: '.vimrc'
+    dest: '~/'
+    force: yes

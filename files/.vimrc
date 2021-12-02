@@ -1,0 +1,219 @@
+" Last update 20211202.1719
+" Author: Sidney de Moraes
+" Copy to clipboard demands installation of vim-gtk on Linux
+
+" Compatibility
+set nocompatible
+set t_ut=
+
+" ******************************************************
+" ==  PLUGINS
+"
+" Automatically download vim-plug if it doesn't exist
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+
+" ******************************************************
+" ==  LOAD PLUGINS
+"
+call plug#begin('~/.vim/plugged')
+
+    " Meta Plugins
+    Plug 'LucHermitte/local_vimrc'            " Drop a _vimrc_local.vim file into any project root directory to setup vim for project only
+        Plug 'LucHermitte/lh-vim-lib'         " Dep for local_vimrc
+    Plug 'tpope/vim-eunuch'                   " Adds UNIX shell commands inside VIM
+
+    " Theme and Appearance
+    Plug 'itchyny/lightline.vim'              " Custom Status Bar
+    " Plug 'vim-airline/vim-airline'            " Lean light status bar
+    Plug 'dracula/vim', { 'as': 'dracula' }   " Theme
+    Plug 'tomasr/molokai'                     " Theme
+    Plug 'ryanoasis/vim-devicons'             " Adds icons to plugins
+    Plug 'TaDaa/vimade'                       " Fades inactive buffers
+
+    " Git
+    Plug 'airblade/vim-gitgutter'             " Git diff in the gutter
+    Plug 'tpope/vim-fugitive'                 " Git functions inside VIM
+
+    " Refactoring
+    Plug 'apalmer1377/factorus'               " Automated refactoring (:FRename<Class|Field|Method|Type|Macro|Arg>, :FAddParam, :FEncapsulate, :FExtractMethod)
+
+    " Supportive Bars
+    Plug 'scrooloose/nerdtree'                " File tree navigation <C-t>
+    Plug 'severin-lemaignan/vim-minimap'      " Open code minimap (:Minimap[Close])
+    Plug 'preservim/tagbar'                   " Open tag (function/method) bar (:TagbarToggle)
+
+    " Navigation
+    Plug 'mg979/vim-visual-multi'             " Sublime feature like for multiple cursors <C-n>, <C-down|C-Up>
+    Plug 'easymotion/vim-easymotion'          " Improved motions
+    Plug 'bkad/CamelCaseMotion'               " Allows creating mappings to navigate through camel/snake case
+    Plug 'tpope/vim-surround'                 " Manipulate surrounding symbols
+    Plug 'ctrlpvim/ctrlp.vim'                 " Fuzzy finder [:CtrlP]
+    Plug 'raimondi/delimitmate'               " Auto closing of quotes, parenthesis and brackets
+    Plug 'jiangmiao/auto-pairs'               " Insert or delete brackets, parens, quotes in pair
+
+    " Syntax Highlight and Code Style
+    Plug 'dense-analysis/ale'                 " Async Lint Engine
+    Plug 'scrooloose/syntastic'               " Syntax checker (TODO: check how to use it)
+    Plug 'ekalinin/dockerfile.vim'            " Syntax highlight
+    Plug 'tfnico/vim-gradle'                  " Syntax highlight
+    Plug 'pangloss/vim-javascript'            " Syntax highlight and indentation
+    Plug 'plasticboy/vim-markdown'            " Markdown syntax highlight
+    Plug 'ObserverOfTime/coloresque.vim'      " CSS color preview
+    Plug 'junegunn/vim-easy-align'            " Align text into columns
+    Plug 'editorconfig/editorconfig-vim'      " Code style checker (User guide: https://editorconfig.org/)
+    Plug 'wellle/context.vim'                 " Shows the header of the current block (funcions, loops, etc)
+    Plug 'mechatroner/rainbow_csv'            " Highlight CSV cols & provide query capabilities
+
+    " Programming
+    Plug 'ackyshake/VimCompletesMe'           " Autocomplete
+    " Plug 'valloric/youcompleteme'           " Autocomplete alternative
+    Plug 'scrooloose/nerdcommenter'           " Comment functions
+    Plug 'sheerun/vim-polyglot'               " Collection of language packs
+    Plug 'mattn/emmet-vim'                    " HTML snippets
+
+    " Database
+    Plug 'tpope/vim-dadbod'                   " Interaction with databases
+    Plug 'kristijanhusak/vim-dadbod-ui'       " UI for vim-dadbod    
+
+call plug#end()
+
+" NERDTREE
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" SYNTASTIC
+" Syntastic is a syntax checking plugin for Vim that runs files through
+" external syntax checkers and displays any resulting errors to the user.
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Configure Standard JS as default linter
+let g:syntastic_javascript_checkers = ['standard']
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" AG.VIM
+" Make Ag search from your project root
+let g:ag_working_path_mode="r"
+
+
+" ******************************************************
+"== MAIN CONFIGURATION
+"
+
+" COLOR SCHEME
+" colorscheme dracula
+colorscheme molokai
+
+" FONT
+set guifont=Monaco\ for\ Powerline:h12
+set antialias
+
+" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+" COMMAND LINE
+" Enhanced command line completion
+set wildmenu
+
+" Complete files like a shell
+set wildmode=list:longest
+
+" Syntax Highlighting
+syntax enable
+filetype plugin indent on
+
+" Auto reload file on external change
+set autoread
+
+" Indentation
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
+set smartindent
+set autoindent
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
+" Some visual options
+set scrolloff=1
+set sidescrolloff=5
+set display+=lastline
+set title
+set background=dark
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set list
+" Enabling colorful status bar
+set t_Co=256
+set laststatus=2
+
+" Split defaults
+set splitbelow
+set splitright
+
+" Searching options
+set ignorecase
+set smartcase
+" Vim will start searching as you type
+set incsearch
+" Highlight search term. Use :nohl to redraw screen and disable highlight
+set hlsearch
+
+" Show line numbers
+set number
+
+" MOVING BETWEEN FILES
+" Set 'hidden' if you want to open a new file inside the same buffer without the
+" need to save it first (if there's any unsaved changes).
+set hidden
+
+" Enable mouse
+set mouse=a
+
+" Pasting option
+set paste
+
+" BACKUP
+" Disable all backup files, never used them
+set nobackup
+set nowritebackup
+set noswapfile
+
+
+" ********************************************
+" == CUSTOM MAPPING
+"
+
+nmap <CR> o<Esc>k
+nmap <S-Enter> O<Esc>j
+nnoremap <C-r> :set norelativenumber!<CR>
+nmap <C-t> :NERDTreeToggle<CR>
+nnoremap <leader>st :SyntasticToggleMode<cr>
+nnoremap <C-f> :call ToggleFoldingMethod()<CR>
+function! ToggleFoldingMethod()
+    if &fdm == "indent"
+        set fdm=syntax
+    else
+        set fdm=indent
+    endif
+endfunction
+
+
