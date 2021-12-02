@@ -1,0 +1,21 @@
+- name: "Add WineHQ repository key"
+  become: true
+  apt_key:
+    url: "https://dl.winehq.org/wine-builds/winehq.key"
+    state: present
+
+- name: "Add WineHQ repository"
+  become: true
+  gather_facts: true
+  apt_repository:
+    repo: "https://dl.winehq.org/wine-builds/ubuntu/ {{ ansible_distribution_release }} main"
+    state: present
+
+- name: "Install WineHQ"
+  become: true
+  apt:
+    update_cache: true
+    name: "winehq-stable"
+    state: latest
+    install_recommends: true
+    autoclean: true
