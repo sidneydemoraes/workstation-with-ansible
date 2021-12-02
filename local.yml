@@ -25,6 +25,10 @@
       include_tasks: packages/apt.yml
       tags: default
 
+    - name: Include Zsh configuration
+      include_tasks: packages/ohmyzsh.yml
+      tags: zsh
+
     - name: Include LibreOffice installation
       include_tasks: packages/libreoffice.yml
       tags: libreoffice
