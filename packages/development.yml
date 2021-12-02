@@ -4,5 +4,6 @@
     name: {{ item }} 
     state: latest
   with_items:
+    - vim
     - tmux
     - tmate
