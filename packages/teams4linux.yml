@@ -1,0 +1,11 @@
+- name: "Download Teams4Linux installer"
+  get-url: url={{ teams4linux_url }} dest={{ tmp_dir }}
+
+- name: "Install Teams4Linux"
+  become: true
+  apt: deb={{ teams4linux_file }}
+
+- name: "Remove .deb file"
+  file:
+    path: "{{ teams4linux_file }}"
+    state: absent
