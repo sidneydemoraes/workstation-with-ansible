@@ -12,6 +12,7 @@
     name: {{ item }} 
     state: latest
   with_items:
+    - software-properties-common
     - atop
     - curl
     - git
