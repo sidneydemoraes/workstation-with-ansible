@@ -1,16 +1,17 @@
 # Ansible playbook to setup NVidia drivers
 # Last update: 2021.11.24 17.33
 - hosts: all
-  become: true
+  tags: nvidia
+  become: yes
 
   tasks:
-    - name: "Detect NVidia devices"
+    - name: Detect NVidia devices
       command: ubuntu-drivers devices
 
-    - name: "Install recommended NVidia graphics driver"
-      become: true
+    - name: Install recommended NVidia graphics driver
+      become: yes
       command: ubuntu-drivers autoinstall
 
-    - name: "Reboot"
-      become: true
+    - name: Reboot
+      become: yes
       reboot:
