@@ -25,6 +25,10 @@
       include_tasks: packages/apt.yml
       tags: default
 
+    - name: Include Snap Upgrade
+      include_tasks: packages/snap.yml
+      tags: snap
+
     - name: Include Zsh configuration
       include_tasks: packages/ohmyzsh.yml
       tags: zsh

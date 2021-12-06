@@ -1,0 +1,7 @@
+- name: Upgrade Snap
+  become: yes
+  tags: snap
+  apt:
+    name: snapd
+    state: latest
+    only_upgrade: yes
