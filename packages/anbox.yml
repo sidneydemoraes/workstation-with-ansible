@@ -1,0 +1,8 @@
+- name: Install Anbox (Android in a Box)
+  tags: anbox
+  become: yes
+  snap:
+    name: anbox
+    channel: beta
+    classic: yes
+    state: present

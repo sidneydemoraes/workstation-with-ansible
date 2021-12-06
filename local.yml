@@ -37,6 +37,10 @@
       include_tasks: packages/browser.yml
       tags: browsers
 
+    - name: Include Authy installation
+      include_tasks: packages/authy.yml
+      tags: authy
+
     - name: Include default development softwares installation
       include_tasks: packages/development.yml
       tags: development
@@ -45,9 +49,9 @@
       include_tasks: packages/localwp.yml
       tags: localwp
 
-    - name: Include Authy installation
-      include_tasks: packages/authy.yml
-      tags: authy
+    - name: Include Anbox installation
+      include_tasks: packages/anbox.yml
+      tags: anbox
 
     - name: Include LibreOffice installation
       include_tasks: packages/libreoffice.yml
