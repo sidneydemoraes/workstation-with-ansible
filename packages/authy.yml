@@ -1,0 +1,6 @@
+- name: Install Authy
+  tags: authy
+  become: yes
+  snap:
+    name: authy
+    state: present
