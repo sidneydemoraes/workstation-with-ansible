@@ -41,6 +41,10 @@
       include_tasks: packages/authy.yml
       tags: authy
 
+    - name: Include Autokey installation
+      include_tasks: packages/autokey.yml
+      tags: autokey
+
     - name: Include default development softwares installation
       include_tasks: packages/development.yml
       tags: development
