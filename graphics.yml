@@ -9,9 +9,12 @@
       command: ubuntu-drivers devices
 
     - name: Install recommended NVidia graphics driver
-      become: yes
       command: ubuntu-drivers autoinstall
 
+    - name: Install NVidia Optimus GPU switcher
+      apt:
+        name: mate-optimus
+        state: latest
+
     - name: Reboot
-      become: yes
       reboot:
