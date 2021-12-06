@@ -45,6 +45,10 @@
       include_tasks: packages/autokey.yml
       tags: autokey
 
+    - name: Include Discord installation
+      include_tasks: packages/discord.yml
+      tags: discord
+
     - name: Include default development softwares installation
       include_tasks: packages/development.yml
       tags: development

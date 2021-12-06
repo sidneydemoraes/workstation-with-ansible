@@ -1,0 +1,16 @@
+- name: Install Discord
+  tags: discord
+  block:
+  - name: Download installer
+    get-url: {{ discord_url }}
+    dest: {{ tmp_dir }}
+
+  - name: Install package
+    become: yes
+    apt: 
+      deb: "{{ tmp_dir }}/{{ discord_file }}"
+
+  - name: Remove installer
+    file:
+      path: "{{ tmp_dir }}/{{ discord_file }}"
+      state: absent

@@ -23,3 +23,7 @@ autokey_version: "0.95.10"
 autokey_file: "autokey-gtk_{{ autokey_version }}-0_all.deb"
 autokey_url: "https://github.com/autokey/autokey/releases/download/v{{ autokey_version }}/{{ autokey_file }}"
 autokey_config_dest: "~/.config/autokey"
+
+discord_version: "0.0.16"
+discord_file: "discord-{{ discord_version }}.deb"
+discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ discord_file }}"
