@@ -5,9 +5,10 @@
 
 - name: Install Vivaldi Browser
   become: yes
-  apt: deb={{ vivaldi_browser_file }}
+  apt: 
+    deb: "{{ tmp_dir }}/{{ vivaldi_browser_file }}"
 
 - name: Remove .deb file
   file:
-    path: "{{ vivaldi_browser_file }}"
+    path: "{{ tmp_dir }}/{{ vivaldi_browser_file }}"
     state: absent

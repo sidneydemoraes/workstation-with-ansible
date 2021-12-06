@@ -2,8 +2,8 @@
   tags: discord
   block:
   - name: Download installer
-    get-url: {{ discord_url }}
-    dest: {{ tmp_dir }}
+    get-url: "{{ discord_url }}"
+    dest: "{{ tmp_dir }}"
 
   - name: Install package
     become: yes
