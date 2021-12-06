@@ -1,4 +1,4 @@
-" Last update 20211202.1719
+" Last update 20211206.1739
 " Author: Sidney de Moraes
 " Copy to clipboard demands installation of vim-gtk on Linux
 
@@ -204,7 +204,7 @@ set noswapfile
 
 nmap <CR> o<Esc>k
 nmap <S-Enter> O<Esc>j
-nnoremap <C-r> :set norelativenumber!<CR>
+nnoremap <C-n> :set norelativenumber!<CR>
 nmap <C-t> :NERDTreeToggle<CR>
 nnoremap <leader>st :SyntasticToggleMode<cr>
 nnoremap <C-f> :call ToggleFoldingMethod()<CR>
