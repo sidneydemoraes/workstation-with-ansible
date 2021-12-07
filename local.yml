@@ -49,6 +49,10 @@
       include_tasks: packages/discord.yml
       tags: discord
 
+    - name: Include Telegram installation
+      include_tasks: packages/telegram.yml
+      tags: telegram
+
     - name: Include default development softwares installation
       include_tasks: packages/development.yml
       tags: development

@@ -1,4 +1,4 @@
-tmp_dir: "/home/sid/tmp"
+tmp_dir: "~/tmp"
 
 localwp_version: "6.1.7"
 localwp_build: "{{ localwp_version }}+5610"
@@ -27,3 +27,7 @@ autokey_config_dest: "~/.config/autokey"
 discord_version: "0.0.16"
 discord_file: "discord-{{ discord_version }}.deb"
 discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ discord_file }}"
+
+telegram_file: "telegram.tar.xz"
+telegram_url: "https://telegram.org/dl/desktop/linux"
+telegram_dest: "{{ tmp_dir }}/{{ telegram_file }}"
