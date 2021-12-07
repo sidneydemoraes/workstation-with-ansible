@@ -61,6 +61,10 @@
       include_tasks: packages/anbox.yml
       tags: anbox
 
+    - name: Include Calibre installation
+      include_tasks: packages/calibre.yml
+      tags: calibre
+
     - name: Include LibreOffice installation
       include_tasks: packages/libreoffice.yml
       tags: libreoffice
