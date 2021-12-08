@@ -1,0 +1,24 @@
+- name: Install and setup Tmux and Tmate
+  tags:
+    - tmux
+    - tmate
+  block:
+    - name: Install packages
+      become: yes
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - tmux
+        - tmate
+
+    - name: Copy tmux configuration file
+      copy:
+        src: ".tmux.conf"
+        dest: "~/"
+        mode: '664'
+
+    - name: Install plugin manager
+      git:
+        repo: "https://github.com/tmux-plugins/tpm"
+        dest: "~/.tmux/plugins/tpm"

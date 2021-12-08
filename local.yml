@@ -57,6 +57,12 @@
       include_tasks: packages/development.yml
       tags: development
 
+    - name: Include Tmate and Tmux installation
+      include_tasks: packages/tmux.yml
+      tags:
+        - tmux
+        - tmate
+
     - name: Include VSCode installation
       include_tasks: packages/vscode.yml
       tags: vscode
