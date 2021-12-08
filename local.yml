@@ -53,9 +53,11 @@
       include_tasks: packages/telegram.yml
       tags: telegram
 
-    - name: Include default development softwares installation
-      include_tasks: packages/development.yml
-      tags: development
+    - name: Include NeoVim installation
+      include_tasks: packages/vim.yml
+      tags:
+        - vim
+        - neovim
 
     - name: Include Tmate and Tmux installation
       include_tasks: packages/tmux.yml
