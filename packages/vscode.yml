@@ -1,0 +1,21 @@
+- name: Download and install VSCode
+  tags: vscode
+  block:
+  - name: Downloading installer
+    get-url:
+      src: "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+      dest: "{{ tmp_dir }}/vscode.deb"
+
+  - name: Install package
+    become: yes
+    apt:
+      deb: "{{ tmp_dir}}/vscode.deb"
+
+  - name: Removing installer
+    file:
+      path: "{{ tmp_dir }}/vscode.deb"
+      state: absent
+
+  - name: Install sync extenstion
+    become: yes
+    command: "code --install-extension shan.code-settings-sync"

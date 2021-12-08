@@ -57,6 +57,10 @@
       include_tasks: packages/development.yml
       tags: development
 
+    - name: Include VSCode installation
+      include_tasks: packages/vscode.yml
+      tags: vscode
+
     - name: Include LocalWP installation
       include_tasks: packages/localwp.yml
       tags: localwp
