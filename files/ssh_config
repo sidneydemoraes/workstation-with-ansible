@@ -1,0 +1,25 @@
+# Last update:
+# 211209.1116 - Sidney de Moraes
+
+Host *
+  ServerAliveInterval 300
+  ServerAliveCountMax 2
+
+# iExemplo de setup for sudo
+#   Hostname hostname
+#   User user
+#   RequestTTY yes
+#   RemoteCommand sudo su
+#  IdentityFile ~/.ssh/file
+# ==> Reuse connection for multiple terminals
+#  ControlPath ~/.ssh/controlmasters/%r@%h:%p
+#  ControlMaster auto
+
+
+Host dnprj
+  Hostname 107.180.58.62
+  User sidneydemoraes
+
+
+
+

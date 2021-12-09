@@ -1,0 +1,86 @@
+- name: Install base apt packages
+  tags:
+    - default
+    - base
+  block:
+    - name: Add Universe Repository
+      apt_repository: 
+        repo: universe
+        state: present
+        update_cache: yes
+        validate_certs: no
+
+    - name: Install packages
+      apt: 
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - software-properties-common
+        - atop
+        - curl
+        - git
+        - gtar
+        - htop
+        - p7zip-full
+        - p7zip-rar
+        - p7zip-desktop
+        - screen
+        - solaar
+        - wget
+
+- name: Base configurations
+  tags:
+    - default
+    - base
+    - dotfiles
+  block:
+    - name: Copy dot files
+      copy:
+        src: "{{ item }}"
+        dest: "~/"
+        force: yes
+        mode: 600
+      with_items:
+        - ".bash_aliases"
+        - ".bash_exports"
+        - ".bashrc"
+        - ".inputrc"
+        - ".screenrc"
+        - "DIR_COLORS"
+        - ".gitconfig"
+
+    - name: Symlink bashrc to bash_profiles
+      file:
+        src: "~/.bashrc"
+        dest: "~/.bash_profile"
+        state: link
+
+- name: SSH configuration
+  tags: ssh
+  block:
+    - name: Create SSH config directoty
+      file:
+        path: "~/.ssh"
+        state: directory
+        mode: 0700
+
+    - name: Copy SSH config
+      copy:
+        src: "ssh_config"
+        dest: "~/.ssh/config"
+        force: yes
+        mode: 0600
+
+    - name: Copy SSH keys
+      copy:
+        src: "{{ item }}"
+        dest: "~/.ssh"
+        mode: 0600
+        force: yes
+        decrypt: yes
+      with_items:
+        - id_rsa
+        - id_rsa.pub
+        - digitalocean_rsa
+        - digitalocean_rsa.pub
+

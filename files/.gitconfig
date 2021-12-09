@@ -1,0 +1,23 @@
+# Last update:
+# 210625.1701 - Sidney de Moraes
+
+[user]
+	name = Sid
+	email = git@najjah.dev
+[core]
+	autocrlf = input
+	filemode = false
+[alias]
+	head = reset --hard HEAD
+	update = pull --all -p
+	ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p --name-only
+	la = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
+	clearcache = "!f() { param=${1:-10} && git fetch --depth=\"$param\" && git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=all }; f"
+	latest = "!git push origin :latest && git tag -fa latest -m \"Latest version\"" 
+[push]
+	default = simple
+[log]
+	decorate = auto
+[credential]
+	helper = cache --timeout=43200

@@ -1,0 +1,53 @@
+### Last update 20200414.1037
+### Author: Sidney de Moraes
+
+# Allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# Tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# Enables use of shift-PgUp and shift-PgDn
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+
+# Stop fullscreen programs from showing on scrollback after they close
+altscreen on
+
+# Erase background with current bg color
+defbce "on"
+
+# Enable 256 color term
+term xterm-256color
+
+# Cache 30000 lines for scroll back
+defscrollback 3000
+ 
+## Very nice tabbed colored hardstatus line
+hardstatus alwayslastline
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%101`%{KW}|%D %M %d %Y%{= Kc} %C%A%{-}'
+
+## Key Bindings
+
+# right-arrow-key:
+bindkey "^A^[OC" focus right
+
+# left-arrow-key:
+bindkey "^A^[OD" focus left
+
+# up-arrow-key:
+bindkey "^A^[OA" focus up
+
+# down-arrow-key:
+bindkey "^A^[OB" focus down
+
+
+# Defining default layout with htop on top region.
+# layout new
+# screen -t htop
+# split
+# resize 15
+# focus next
+# screen -t bash
+# focus next
+# exec htop
+# focus next

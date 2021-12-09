@@ -1,8 +1,6 @@
 # Ansible playbook to setup my workstation
 # Last update: 2021.11.22 17.33
-- hosts: all
-  become: yes
-
+- hosts: localhost
   vars_files:
     - vars/main.yml
 
@@ -21,9 +19,13 @@
     # setup users
     # - include: users/ansible.yml
 
-    - name: Include default packages
-      include_tasks: packages/apt.yml
-      tags: default
+    - name: Include default packages and configurations
+      include_tasks: packages/base.yml
+      tags: 
+        - default
+        - base
+        - dotfiles
+        - ssh
 
     - name: Include Snap Upgrade
       include_tasks: packages/snap.yml
@@ -87,7 +89,7 @@
 
 
 # Clean Up
-- hosts: all
+- hosts: localhost
   become: yes
   tasks:
     - name: Cleanup cache
