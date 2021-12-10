@@ -38,7 +38,7 @@
 
     - name: Include Browser installation
       include_tasks: packages/browser.yml
-      tags: browsers
+      tags: browser
 
     - name: Include Authy installation
       include_tasks: packages/authy.yml
