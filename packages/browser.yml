@@ -1,5 +1,5 @@
 - name: Download Vivaldi Browser installer
-  get-url: 
+  get_url:
     url: "{{ vivaldi_browser_url }}"
     dest: "{{ tmp_dir }}"
 
