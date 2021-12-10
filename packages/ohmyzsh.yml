@@ -7,7 +7,6 @@
       state: latest
 
   - name: Clone Oh My Zsh
-    gather_facts: yes
     command:
       cmd: 'git clone -c core.autocrlf=input --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
       chdir: "{{ ansible_user_dir }}"
