@@ -1,4 +1,4 @@
-tmp_dir: "~/tmp"
+tmp_dir: "{{ ansible_user_dir }}/ansible_tmp/"
 
 localwp_version: "6.1.7"
 localwp_build: "{{ localwp_version }}+5610"

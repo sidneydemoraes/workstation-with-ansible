@@ -103,3 +103,8 @@
         autoremove: yes
         purge: yes
       changed_when: no
+
+    - name: Remove temp dir
+      file:
+        path: "{{ tmp_dir }}"
+        state: absent
