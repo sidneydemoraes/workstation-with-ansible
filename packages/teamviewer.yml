@@ -2,6 +2,7 @@
   get-url: 
     url: "{{ teamviewer_url }}" 
     dest: "{{ tmp_dir }}"
+    check_mode: no
 
 - name: Install TeamViewer
   become: yes
@@ -12,4 +13,4 @@
   file:
     path: "{{ tmp_dir }}/{{ teaviewer_file }}"
     state: absent
-
+    check_mode: no

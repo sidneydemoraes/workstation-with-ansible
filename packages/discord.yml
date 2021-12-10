@@ -4,6 +4,7 @@
   - name: Download installer
     get-url: "{{ discord_url }}"
     dest: "{{ tmp_dir }}"
+      check_mode: no
 
   - name: Install package
     become: yes
@@ -14,3 +15,4 @@
     file:
       path: "{{ tmp_dir }}/{{ discord_file }}"
       state: absent
+      check_mode: no

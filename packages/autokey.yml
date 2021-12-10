@@ -5,6 +5,7 @@
     get-url: 
       url: "{{ autokey_url }}"
       dest: "{{ tmp_dir }}"
+      check_mode: no
 
   - name: Install Autokey
     become: yes
@@ -15,6 +16,7 @@
     file:
       path: "{{ tmp_dir }}/{{ autokey_file }}"
       state: absent
+      check_mode: no
 
   - name: Import configuration files
     git:

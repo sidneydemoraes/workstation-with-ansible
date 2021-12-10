@@ -5,6 +5,7 @@
     get-url:
       url: "{{ telegram_url }}"
       dest: "{{ telegram_dest }}"
+      check_mode: no
 
   - name: Extract package
     unarchive:
@@ -22,3 +23,4 @@
     file:
       path: "{{ telegram_dest }}"
       state: absent
+      check_mode: no
