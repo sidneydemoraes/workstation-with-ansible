@@ -2,6 +2,7 @@
   tags:
     - default
     - base
+  become: yes
   block:
     - name: Add Universe Repository
       apt_repository: 
