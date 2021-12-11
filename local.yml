@@ -12,6 +12,7 @@
       changed_when: no
 
     - name: Create temp dir
+      tags: always
       file:
         path: "{{ tmp_dir }}"
         state: directory
@@ -73,6 +74,10 @@
       include_tasks: packages/vscode.yml
       tags: vscode
 
+    - name: Include Java and JDK configuration
+      include_tasks: packages/java.yml
+      tags: java
+
     - name: Include LocalWP installation
       include_tasks: packages/localwp.yml
       tags: localwp
@@ -106,6 +111,7 @@
       changed_when: no
 
     - name: Remove temp dir
+      tags: always
       file:
         path: "{{ tmp_dir }}"
         state: absent
