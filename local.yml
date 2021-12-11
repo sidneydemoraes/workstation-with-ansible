@@ -15,7 +15,7 @@
       file:
         path: "{{ tmp_dir }}"
         state: directory
-        check_mode: no
+      check_mode: no
 
   tasks:
     # setup users
@@ -109,4 +109,4 @@
       file:
         path: "{{ tmp_dir }}"
         state: absent
-        check_mode: no
+      check_mode: no

@@ -5,7 +5,7 @@
     get-url:
       src: "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
       dest: "{{ tmp_dir }}/vscode.deb"
-      check_mode: no
+    check_mode: no
 
   - name: Install package
     become: yes
@@ -16,7 +16,7 @@
     file:
       path: "{{ tmp_dir }}/vscode.deb"
       state: absent
-      check_mode: no
+    check_mode: no
 
   - name: Install sync extenstion
     become: yes

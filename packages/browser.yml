@@ -5,7 +5,7 @@
     get_url:
       url: "{{ vivaldi_browser_url }}"
       dest: "{{ tmp_dir }}"
-      check_mode: no
+    check_mode: no
 
   - name: Install Vivaldi Browser
     become: yes
@@ -16,4 +16,4 @@
     file:
       path: "{{ tmp_dir }}/{{ vivaldi_browser_file }}"
       state: absent
-      check_mode: no
+    check_mode: no
