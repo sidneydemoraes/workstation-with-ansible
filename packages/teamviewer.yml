@@ -1,5 +1,5 @@
 - name: Download TeamViewer installer
-  get-url: 
+  get_url: 
     url: "{{ teamviewer_url }}" 
     dest: "{{ tmp_dir }}"
   check_mode: no

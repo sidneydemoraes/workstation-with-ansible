@@ -6,7 +6,6 @@
 
 - name: Add WineHQ repository
   become: yes
-  gather_facts: yes
   apt_repository:
     repo: "https://dl.winehq.org/wine-builds/ubuntu/ {{ ansible_distribution_release }} main"
     state: present

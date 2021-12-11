@@ -2,7 +2,7 @@
   tags: autokey
   block:
   - name: Download Autokey installer
-    get-url: 
+    get_url: 
       url: "{{ autokey_url }}"
       dest: "{{ tmp_dir }}"
     check_mode: no

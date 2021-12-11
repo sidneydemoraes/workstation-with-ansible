@@ -1,5 +1,5 @@
 - name: Download Teams4Linux installer
-  get-url: 
+  get_url: 
     url: "{{ teams4linux_url }}"
     dest: "{{ tmp_dir }}"
   check_mode: no

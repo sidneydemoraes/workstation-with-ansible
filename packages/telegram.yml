@@ -2,7 +2,7 @@
   tags: telegram
   block:
   - name: Download package
-    get-url:
+    get_url:
       url: "{{ telegram_url }}"
       dest: "{{ telegram_dest }}"
     check_mode: no

@@ -6,7 +6,6 @@
 
 - name: Add Virtualbox repository
   become: yes
-  gather_facts: yes
   apt_repository:
     repo: "https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
     state: present

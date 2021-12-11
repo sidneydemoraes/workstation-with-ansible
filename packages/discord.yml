@@ -2,7 +2,7 @@
   tags: discord
   block:
   - name: Download installer
-    get-url: 
+    get_url: 
       url: "{{ discord_url }}"
       dest: "{{ tmp_dir }}"
     check_mode: no

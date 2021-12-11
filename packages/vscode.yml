@@ -2,7 +2,7 @@
   tags: vscode
   block:
   - name: Downloading installer
-    get-url:
+    get_url:
       src: "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
       dest: "{{ tmp_dir }}/vscode.deb"
     check_mode: no
