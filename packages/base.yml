@@ -46,7 +46,7 @@
     - name: Copy dot files
       copy:
         src: "{{ item }}"
-        dest: "~/"
+        dest: "{{ ansible_user_dir }}"
         force: yes
         mode: 600
       with_items:
@@ -60,8 +60,8 @@
 
     - name: Symlink bashrc to bash_profiles
       file:
-        src: "~/.bashrc"
-        dest: "~/.bash_profile"
+        src: "{{ ansible_user_dir }}/.bashrc"
+        dest: "{{ ansible_user_dir }}/.bash_profile"
         state: link
 
 - name: SSH configuration
@@ -69,21 +69,21 @@
   block:
     - name: Create SSH config directoty
       file:
-        path: "~/.ssh"
+        path: "{{ ansible_user_dir }}/.ssh"
         state: directory
         mode: 0700
 
     - name: Copy SSH config
       copy:
         src: "ssh_config"
-        dest: "~/.ssh/config"
+        dest: "{{ ansible_user_dir }}/.ssh/config"
         force: yes
         mode: 0600
 
     - name: Copy SSH keys
       copy:
         src: "{{ item }}"
-        dest: "~/.ssh"
+        dest: "{{ ansible_user_dir }}/.ssh"
         mode: 0600
         force: yes
         decrypt: yes
