@@ -6,7 +6,7 @@
   block:
   - name: Install package
     apt: 
-      name: {{ item }} 
+      name: "{{ item }}"
       state: latest
     with_items:
       - neovim
@@ -16,5 +16,5 @@
   - name: Copy configuration file
     copy:
       src: '.vimrc'
-      dest: '~/'
+      dest: "{{ ansible_user_dir }}"
       force: yes
