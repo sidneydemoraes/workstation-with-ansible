@@ -90,16 +90,16 @@
       tags: libreoffice
 
 
-# Clean Up
-- hosts: localhost
-  become: yes
-  tasks:
+  # Clean Up
+  post_tasks:
     - name: Cleanup cache
+      become: yes
       apt:
         autoclean: yes
       changed_when: no
 
     - name: Autoremove orphan packages
+      become: yes
       apt:
         autoremove: yes
         purge: yes
