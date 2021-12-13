@@ -78,6 +78,10 @@
       include_tasks: packages/java.yml
       tags: java
 
+    - name: Include Python instalation 
+      include_tasks: packages/python.yml
+      tags: python
+
     - name: Include LocalWP installation
       include_tasks: packages/localwp.yml
       tags: localwp
