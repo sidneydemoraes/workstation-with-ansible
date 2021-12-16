@@ -98,6 +98,15 @@
       include_tasks: packages/libreoffice.yml
       tags: libreoffice
 
+    - name: Include games platforms installation
+      include_tasks: packages/games.yml
+      tags:
+        - games
+        - gog
+        - epic
+        - steam
+
+
 
   # Clean Up
   post_tasks:

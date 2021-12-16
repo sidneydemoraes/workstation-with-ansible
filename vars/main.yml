@@ -31,3 +31,8 @@ discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ disc
 telegram_file: "telegram.tar.xz"
 telegram_url: "https://telegram.org/dl/desktop/linux"
 telegram_dest: "{{ tmp_dir }}/{{ telegram_file }}"
+
+gog_version: "1.1.0"
+gog_file: "minigalaxy_{{ gog_version }}_all.deb"
+gog_url: "https://github.com/sharkwouter/minigalaxy/releases/download/{{ gog_version }}/{{ gog_file }}"
+gog_dest: "{{ tmp_dir }}/{{ gog_file }}"

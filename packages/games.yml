@@ -1,0 +1,26 @@
+- name: Install and setup GoG
+  tags:
+    - games
+    - gog
+  - block:
+    - name: Download GoG installer
+      get_url:
+        url: "{{ gog_url }}"
+        dest: "{{ gog_dest }}"
+      check_mode: no
+
+    - name: Install GoG
+      become: yes
+      apt:
+        deb: "{{ gog_dest }}"
+
+    - name: Remove installer
+      file:
+        path: "{{ gog_dest }}"
+        state: absent
+      check_mode: no
+
+# - name: Install and setup Steam
+
+
+# - name: Install and setup Epic Games
