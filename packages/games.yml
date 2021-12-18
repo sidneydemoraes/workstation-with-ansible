@@ -3,22 +3,19 @@
     - games
     - gog
   - block:
-    - name: Download GoG installer
-      get_url:
-        url: "{{ gog_url }}"
-        dest: "{{ gog_dest }}"
-      check_mode: no
+    - name: Get latest GoG installer URL
+      uri:
+        url: "{{ github_api_first_part }}/{{ gog_repo }}/{{ github_api_last_part }}"
+        return_content: yes
+      register: {{ gog_latest }}
 
-    - name: Install GoG
+    - name: Install package
+      loop: "{{ gog_latest.json.assets }}"
+      when: "'.deb' in item.name"
       become: yes
       apt:
-        deb: "{{ gog_dest }}"
+        deb: "{{ item.browser_download_url }}"
 
-    - name: Remove installer
-      file:
-        path: "{{ gog_dest }}"
-        state: absent
-      check_mode: no
 
 # - name: Install and setup Steam
 

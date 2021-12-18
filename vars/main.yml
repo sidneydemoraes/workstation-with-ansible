@@ -1,4 +1,6 @@
 tmp_dir: "{{ ansible_user_dir }}/tmp/ansible_tmp"
+github_api_first_part: "https://api.github.com/repos"
+github_api_last_part: "releases/lastest"
 
 localwp_version: "6.1.7"
 localwp_build: "{{ localwp_version }}+5610"
@@ -32,7 +34,5 @@ telegram_file: "telegram.tar.xz"
 telegram_url: "https://telegram.org/dl/desktop/linux"
 telegram_dest: "{{ tmp_dir }}/{{ telegram_file }}"
 
-gog_version: "1.1.0"
-gog_file: "minigalaxy_{{ gog_version }}_all.deb"
-gog_url: "https://github.com/sharkwouter/minigalaxy/releases/download/{{ gog_version }}/{{ gog_file }}"
-gog_dest: "{{ tmp_dir }}/{{ gog_file }}"
+gog_repo: "sharkwouter/minigalaxy"
+gog_dest: "{{ tmp_dir }}/gog.deb"
