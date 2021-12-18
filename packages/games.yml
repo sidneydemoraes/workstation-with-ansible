@@ -2,7 +2,7 @@
   tags:
     - games
     - gog
-  - block:
+  block:
     - name: Get latest GoG installer URL
       uri:
         url: "{{ github_api_first_part }}/{{ gog_repo }}/{{ github_api_last_part }}"
@@ -21,7 +21,7 @@
   tags:
     - games
     - epic
-  - block:
+  block:
     - name: Get latest Epic installer URL
       uri:
         url: "{{ github_api_first_part }}/{{ epic_repo }}/{{ github_api_last_part }}"
@@ -36,4 +36,24 @@
         deb: "{{ item.browser_download_url }}"
 
 
-# - name: Install and setup Steam e
+- name: Install Steam
+  tags:
+    - games
+    - steam
+  block:
+    - name: Get Steam installer
+      get_url: 
+        url: "{{ steam_url }}"
+        dest: "{{ steam_dest }}"
+      check_mode: no
+
+    - name: Install package
+      become: yes
+      apt:
+        deb: "{{ steam_dest }}"
+
+    - name: Remove installer
+      file:
+        path: "{{ steam_dest }}"
+        state: absent
+      check_mode: no
