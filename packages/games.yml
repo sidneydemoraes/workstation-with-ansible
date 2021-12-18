@@ -7,7 +7,7 @@
       uri:
         url: "{{ github_api_first_part }}/{{ gog_repo }}/{{ github_api_last_part }}"
         return_content: yes
-      register: {{ gog_latest }}
+      register: "{{ gog_latest }}"
 
     - name: Install package
       loop: "{{ gog_latest.json.assets }}"
@@ -17,7 +17,23 @@
         deb: "{{ item.browser_download_url }}"
 
 
-# - name: Install and setup Steam
+- name: Install and setup Epic
+  tags:
+    - games
+    - epic
+  - block:
+    - name: Get latest Epic installer URL
+      uri:
+        url: "{{ github_api_first_part }}/{{ epic_repo }}/{{ github_api_last_part }}"
+        return_content: yes
+      register: "{{ epic_latest }}"
+
+    - name: Install package
+      loop: "{{ epic_latest.json.assets }}"
+      when: "'.deb' in item.name"
+      become: yes
+      apt:
+        deb: "{{ item.browser_download_url }}"
 
 
-# - name: Install and setup Epic Games
+# - name: Install and setup Steam e
