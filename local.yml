@@ -97,9 +97,14 @@
       include_tasks: packages/python.yml
       tags: python
 
-    - name: Include LocalWP installation
-      include_tasks: packages/localwp.yml
-      tags: localwp
+    - name: Install LocalWP
+      include_tasks: packages/download_and_install_apt_package.yml
+      tags: "{{ package.tags }}"
+      vars:
+        package:
+          name: LocalWP
+          tags: localwp
+          url: "{{ localwp_url }}"
 
     - name: Include Anbox installation
       include_tasks: packages/anbox.yml
