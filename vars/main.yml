@@ -32,6 +32,7 @@ discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ disc
 
 vscode_url: "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 sdkman_url: "https://get.sdkman.io"
+pyenv_url: "https://pyenv.run"
 
 telegram_file: "telegram.tar.xz"
 telegram_url: "https://telegram.org/dl/desktop/linux"

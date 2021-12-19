@@ -4,45 +4,33 @@
   - name: Install dependencies
     become: yes
     apt:
-      name: "{{ item }}"
+      name: "{{ packages }}"
       state: latest
-    with_items:
-      - make
-      - build-essential
-      - libssl-dev
-      - zlib1g-dev
-      - libbz2-dev
-      - libreadline-dev
-      - libsqlite3-dev
-      - wget
-      - curl
-      - llvm
-      - libncursesw5-dev
-      - xz-utils
-      - tk-dev
-      - libxml2-dev
-      - libxmlsec1-dev
-      - libffi-dev
-      - liblzma-dev
-
-  - name: Download PyEnv installer
-    get_url:
-      url: "https://pyenv.run"
-      dest: "{{ tmp_dir }}/pyenv_installer.sh"
-      mode: 0755
-    check_mode: no
+    vars:
+      packages:
+        - make
+        - build-essential
+        - libssl-dev
+        - zlib1g-dev
+        - libbz2-dev
+        - libreadline-dev
+        - libsqlite3-dev
+        - wget
+        - curl
+        - llvm
+        - libncursesw5-dev
+        - xz-utils
+        - tk-dev
+        - libxml2-dev
+        - libxmlsec1-dev
+        - libffi-dev
+        - liblzma-dev
 
   - name: Install PyEnv
-    shell: "{{ tmp_dir }}/pyenv_installer.sh"
-
-  - name: Remove PyEnv installer
-    file:
-      path: "{{ tmp_dir }}/pyenv_installer.sh"
-      state: absent
-    check_mode: no
+    shell: "curl {{ pyenv_url}} | bash"
 
   - name: Get PyEnv root directory
-    command: "pyenv root"
+    shell: "pyenv root"
     register: "pyenv_root"
 
   - name: Download PyEnv VirtualEnv
