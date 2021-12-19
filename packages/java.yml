@@ -1,19 +1,4 @@
 - name: Installing and setting up Java and JDK
   tags: java
-  block:
-    - name: Download SDKMan installation script
-      get_url:
-        url: "https://get.sdkman.io"
-        dest: "{{ tmp_dir }}/sdkman_installer.sh"
-        mode: 0755
-      check_mode: no
-
-    - name: Install SDKMan
-      shell: "{{ tmp_dir }}/sdkman_installer.sh"
-
-    - name: Delete installer
-      file:
-        path: "{{ tmp_dir }}/sdkman_installer.sh"
-        state: absent
-      check_mode: no
+  shell: "curl -s '{{ sdkman_url }}' | bash"
 
