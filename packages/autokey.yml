@@ -1,22 +1,10 @@
 - name: Install and setup Autokey
   tags: autokey
   block:
-  - name: Download Autokey installer
-    get_url: 
-      url: "{{ autokey_url }}"
-      dest: "{{ tmp_dir }}"
-    check_mode: no
-
-  - name: Install Autokey
+  - name: Download and install Autokey
     become: yes
     apt: 
-      deb: "{{ tmp_dir}}/{{ autokey_file }}"
-
-  - name: Remove .deb file
-    file:
-      path: "{{ tmp_dir }}/{{ autokey_file }}"
-      state: absent
-    check_mode: no
+      deb: "{{ autokey_url }}"
 
   - name: Import configuration files
     git:
