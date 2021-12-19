@@ -39,17 +39,22 @@
       tags: zsh
 
     - name: Install Browsers
-      tags: browser
-      include_tasks: packages/browser.yml
+      include_tasks: packages/download_and_install_apt_package.yml
+      tags: "{{ package.tags }}"
       vars:
         package:
           name: Vivaldi Browser
           tags: browser
           url: "{{ vivaldi_browser_url }}"
 
-    - name: Include Authy installation
-      include_tasks: packages/authy.yml
-      tags: authy
+    - name: Install Authy
+      include_tasks: packages/install_snap_package.yml
+      tags: "{{ package.tags }}"
+      vars:
+        package:
+          name: Authy
+          tags: authy
+          id: authy
 
     - name: Include Autokey installation
       include_tasks: packages/autokey.yml

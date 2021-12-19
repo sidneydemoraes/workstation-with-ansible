@@ -1,0 +1,6 @@
+- name: "Install {{ package.name }}"
+  tags: "{{ package.tags }}"
+  become: yes
+  snap:
+    name: "{{ package.id }}"
+    state: present
