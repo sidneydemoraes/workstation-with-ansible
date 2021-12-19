@@ -38,9 +38,14 @@
       include_tasks: packages/ohmyzsh.yml
       tags: zsh
 
-    - name: Include Browser installation
-      include_tasks: packages/browser.yml
+    - name: Install Browsers
       tags: browser
+      include_tasks: packages/browser.yml
+      vars:
+        package:
+          name: Vivaldi Browser
+          tags: browser
+          url: "{{ vivaldi_browser_url }}"
 
     - name: Include Authy installation
       include_tasks: packages/authy.yml
