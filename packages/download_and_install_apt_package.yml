@@ -1,0 +1,7 @@
+- name: "Preparing installation of {{ package.name }}"
+  tags: "{{ package.tags }}"
+  block:
+    - name: Download and install package
+      become: yes
+      apt:
+        deb: "{{ package.url }}"
