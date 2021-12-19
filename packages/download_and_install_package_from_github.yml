@@ -1,0 +1,17 @@
+- name: "Preparing installation of {{ package.name }}"
+  tags: "{{ package.tags }}"
+  block:
+    - name: Get latest release URL
+      uri:
+        url: "{{ github_api_first_part }}/{{ package.repo }}/{{ github_api_last_part }}"
+        return_content: yes
+      register: "{{ latest }}"
+
+    - name: Install package
+      loop: "{{ latest.json.assets }}"
+      when: "'.deb' in item.name"
+      become: yes
+      apt:
+        deb: "{{ item.browser_download_url }}"
+
+
