@@ -60,9 +60,14 @@
       include_tasks: packages/autokey.yml
       tags: autokey
 
-    - name: Include Discord installation
-      include_tasks: packages/discord.yml
-      tags: discord
+    - name: Install Discord
+      include_tasks: packages/download_and_install_apt_package.yml
+      tags: "{{ package.tags }}"
+      vars:
+        package:
+          name: Discord
+          tags: discord
+          url: "{{ discord_url }}"
 
     - name: Include Telegram installation
       include_tasks: packages/telegram.yml
