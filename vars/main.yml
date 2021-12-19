@@ -30,6 +30,8 @@ discord_version: "0.0.16"
 discord_file: "discord-{{ discord_version }}.deb"
 discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ discord_file }}"
 
+vscode_url:  "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+
 telegram_file: "telegram.tar.xz"
 telegram_url: "https://telegram.org/dl/desktop/linux"
 telegram_dest: "{{ tmp_dir }}/{{ telegram_file }}"

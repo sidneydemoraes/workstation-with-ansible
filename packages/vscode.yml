@@ -1,22 +1,10 @@
 - name: Download and install VSCode
   tags: vscode
   block:
-  - name: Downloading installer
-    get_url:
-      url: "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
-      dest: "{{ tmp_dir }}/vscode.deb"
-    check_mode: no
-
-  - name: Install package
+  - name: Download and install package
     become: yes
     apt:
-      deb: "{{ tmp_dir}}/vscode.deb"
-
-  - name: Removing installer
-    file:
-      path: "{{ tmp_dir }}/vscode.deb"
-      state: absent
-    check_mode: no
+      deb: "{{ vscode_url }}"
 
   - name: Install sync extenstion
     become: yes
