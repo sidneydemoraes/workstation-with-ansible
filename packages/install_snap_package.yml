@@ -3,4 +3,6 @@
   become: yes
   snap:
     name: "{{ package.id }}"
-    state: present
+    state: "{{ package.state | default('present', true) }}"
+    channel: "{{ package.channel | default('stable', true) }}"
+    classic: "{{ package.classic | default('yes', true) }}"
