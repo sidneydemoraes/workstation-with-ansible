@@ -90,6 +90,15 @@
         - vim
         - neovim
 
+    - name: Install Teams4Linux
+      include_tasks: packages/download_and_install_apt_package.yml
+      tags: "{{ package.tags }}"
+      vars:
+        package:
+          name: Teams4Linux
+          tags: teams
+          url: "{{ teams4linux_url }}"
+
     - name: Include Tmate and Tmux installation
       include_tasks: packages/tmux.yml
       tags:
