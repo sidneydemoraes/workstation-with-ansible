@@ -1,0 +1,16 @@
+- name: "Preparing installation of {{ package.name }}"
+  tags: "{{ package.tags }}"
+  become: yes
+  block:
+    - name: "Add {{ package.name }} Repository"
+      apt_repository: 
+        repo: "{{ package.apt_repo }}"
+        state: present
+        update_cache: yes
+        validate_certs: no
+      when: "{{ package.apt_repo }} is defined"
+
+    - name: Download and install package
+      apt:
+        name: "{{ package.id }}"
+        state: "{{ package.state | default('latest') }}"
