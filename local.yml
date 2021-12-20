@@ -130,14 +130,25 @@
           id: libreoffice
           apt_repo: "ppa:libreoffice/ppa"
 
+    - name: Install Epic and GOG
+      include_tasks: packages/download_and_install_package_from_github.yml
+      tags: "{{ package.tags }}"
+      loop:
+        - { name: 'Epic Games', tags: ['games','epic'], repo: "{{ epic_repo }}" }
+        - { name: 'GoG', tags: ['games','gog'], repo: "{{ gog_repo }}" }
+      loop_control:
+        loop_var: package
 
-    - name: Include games platforms installation
-      include_tasks: packages/games.yml
-      tags:
-        - games
-        - gog
-        - epic
-        - steam
+    - name: Install Steam
+      include_tasks: packages/download_and_install_apt_package.yml
+      tags: "{{ package.tags }}"
+      var:
+        package:
+          name: Steam
+          tags: 
+            - games
+            - steam
+          url: "{{ steam_url }}"
 
 
 
