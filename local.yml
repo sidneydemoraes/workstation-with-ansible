@@ -106,17 +106,29 @@
           tags: localwp
           url: "{{ localwp_url }}"
 
-    - name: Include Anbox installation
+    - name: Install Anbox
       include_tasks: packages/anbox.yml
-      tags: anbox
+      tags: "{{ package.tags }}"
+      vars:
+        package:
+          name: Anbox (Android in a Box)
+          tags: anbox
+          id: anbox
 
     - name: Include Calibre installation
       include_tasks: packages/calibre.yml
       tags: calibre
 
-    - name: Include LibreOffice installation
-      include_tasks: packages/libreoffice.yml
-      tags: libreoffice
+    - name: Install LibreOffice
+      include_tasks: packages/install_apt_package.yml
+      tags: "{{ package.tags }}"
+      vars:
+        package:
+          name: LibreOffice Oficial
+          tags: libreoffice
+          id: libreoffice
+          apt_repo: "ppa:libreoffice/ppa"
+
 
     - name: Include games platforms installation
       include_tasks: packages/games.yml
