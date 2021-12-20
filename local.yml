@@ -29,6 +29,7 @@
         - base
         - dotfiles
         - ssh
+        - snap
 
     - name: Include Snap Upgrade
       include_tasks: packages/snap.yml

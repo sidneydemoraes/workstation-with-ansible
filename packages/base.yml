@@ -65,7 +65,10 @@
         state: link
 
 - name: SSH configuration
-  tags: ssh
+  tags:
+    - default
+    - base
+    - ssh
   block:
     - name: Create SSH config directoty
       file:
@@ -93,3 +96,13 @@
         - digitalocean_rsa
         - digitalocean_rsa.pub
 
+- name: Upgrade Snap
+  become: yes
+  tags:
+    - default
+    - base
+    - snap
+  apt:
+    name: snapd
+    state: latest
+    only_upgrade: yes
