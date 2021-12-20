@@ -107,13 +107,14 @@
           url: "{{ localwp_url }}"
 
     - name: Install Anbox
-      include_tasks: packages/anbox.yml
+      include_tasks: packages/install_snap_package.yml
       tags: "{{ package.tags }}"
       vars:
         package:
           name: Anbox (Android in a Box)
           tags: anbox
           id: anbox
+          channel: beta
 
     - name: Include Calibre installation
       include_tasks: packages/calibre.yml
