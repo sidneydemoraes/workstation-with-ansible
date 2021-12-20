@@ -170,7 +170,14 @@
             - steam
           url: "{{ steam_url }}"
 
-
+    - name: Install Team Viewer
+      include_tasks: packages/download_and_install_apt_package.yml
+      tags: "{{ package.tags}}"
+      var:
+        package:
+          name: Team Viewer
+          tags: teamviewer
+          url: "{{ teamviewer_url }}"
 
 
   # Clean Up
