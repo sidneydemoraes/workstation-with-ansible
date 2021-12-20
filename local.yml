@@ -34,6 +34,16 @@
       include_tasks: packages/snap.yml
       tags: snap
 
+    - name: Install Slimbook Battery
+      tags: "{{ package.tags }}"
+      include_tasks: packages/install_apt_package.yml
+      var:
+        package:
+          name: Slimbook Battery
+          tags: slimbook
+          id: simbookbattery
+          apt_repo: "ppa:slimbook/slimbook"
+
     - name: Include Zsh configuration
       include_tasks: packages/ohmyzsh.yml
       tags: zsh
@@ -149,6 +159,7 @@
             - games
             - steam
           url: "{{ steam_url }}"
+
 
 
 
