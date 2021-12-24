@@ -1,4 +1,31 @@
-- name: Installing and setting up Java and JDK
+- name: Preparing installation of Java and JDK
   tags: java
-  shell: "curl -s '{{ sdkman_url }}' | bash"
+  block:
+    - name: Installing SDKMan
+      shell: "curl -s '{{ sdkman_url }}' | bash"
 
+    - name: Get latest Corretto version
+      shell: "sdk list java | grep -e '-amzn' | head -1 | awk '{ print $(NF) }'"
+      register: corretto_latest
+
+    - name: "Install Amazon Corretto JDK version {{ corretto_latest }}"
+      shell: "sdk install java {{ corretto_latest }}"
+
+    - name: Get latest OpenJDK version
+      shell: "sdk list java | grep -e '-open' | head -1 | awk '{ print $(NF) }'"
+      register: openjdk_latest
+
+    - name: "Install OpenJDK version {{ openjdk_latest }}"
+      shell: "sdk install java {{ openjdk_latest }}"
+
+    - name: Setup OpenJDK as default Java version
+      shell: "sdk default java {{ openjdk_latest }}"
+
+    - name: Install latest Gradle version
+      shell: "sdk install gradle"
+
+    - name: Install latest Kotlin version
+      shell: "sdk install kotlin"
+
+    - name: Install latest VisualVM version
+      shell: "sdk install visualvm"
