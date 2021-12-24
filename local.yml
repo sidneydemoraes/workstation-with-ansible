@@ -136,6 +136,10 @@
           id: anbox
           channel: beta
 
+    - name: Install Docker
+      include_tasks: packages/docker.yml
+      tags: docker
+
     - name: Include Calibre installation
       include_tasks: packages/calibre.yml
       tags: calibre
