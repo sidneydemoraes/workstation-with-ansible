@@ -46,17 +46,23 @@
     - name: Copy dot files
       copy:
         src: "{{ item }}"
-        dest: "{{ ansible_user_dir }}"
+        dest: "{{ ansible_user_dir }}/.{{ item }}"
         force: yes
         mode: 600
       with_items:
-        - ".bash_aliases"
-        - ".bash_exports"
-        - ".bashrc"
-        - ".inputrc"
-        - ".screenrc"
-        - "DIR_COLORS"
-        - ".gitconfig"
+        - "bash_aliases"
+        - "bash_exports"
+        - "bashrc"
+        - "inputrc"
+        - "screenrc"
+        - "gitconfig"
+
+    - name: Copy DIR_COLORS
+      copy:
+        src: "DIR_COLORS"
+        dest: "{{ ansible_user_dir }}"
+        force: yes
+        mode: 600
 
     - name: Symlink bashrc to bash_profiles
       file:
