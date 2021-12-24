@@ -42,3 +42,13 @@
   - name: Enable auto activation of Pyenv Virtualenv
     shell: "echo 'eval \"$(pyenv virtualenv-init -)\"' >> ~/.bash_exports"
 
+  - name: Get latest Python version
+    shell: 'pyenv install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1'
+    register: python_latest_version
+
+  - name: "Install Python version {{ python_latest_version }}"
+    shell: "pyenv install {{ python_latest_version }}"
+
+  - name: "Set global Python version to {{ python_latest_version }}"
+    shell: "pyenv global {{ python_latest_version }}"
+
