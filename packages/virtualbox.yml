@@ -1,19 +1,20 @@
-- name: Add Virtualbox repository key
+- name: Preparing installation of Virtualbox
+  tags: virtualbox
   become: yes
-  apt_key:
-    url: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
-    state: present
+  block:
+    - name: Add Virtualbox repository key
+      apt_key:
+        url: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+        state: present
 
-- name: Add Virtualbox repository
-  become: yes
-  apt_repository:
-    repo: "https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
-    state: present
+    - name: Add Virtualbox repository
+      apt_repository:
+        repo: "https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
+        state: present
 
-- name: Install Virtualbox
-  become: yes
-  apt:
-    update_cache: yes
-    name: "virtualbox-{{ virtualbox_version }}"
-    state: latest
-    autoclean: yes
+    - name: Install Virtualbox
+      apt:
+        update_cache: yes
+        name: "virtualbox-{{ virtualbox_version }}"
+        state: latest
+        autoclean: yes
