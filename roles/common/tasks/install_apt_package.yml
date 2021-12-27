@@ -8,7 +8,7 @@
         state: present
         update_cache: yes
         validate_certs: no
-      when: "{{ package.apt_repo }} is defined"
+      when: package.apt_repo is defined
 
     - name: Download and install package
       apt:
