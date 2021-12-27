@@ -1,0 +1,9 @@
+- name: Install Teams4Linux
+  tags: teams
+  include_tasks: packages/download_and_install_apt_package.yml
+  vars:
+    package:
+      name: Teams4Linux
+      tags: teams
+      url: "{{ teams4linux_url }}"
+
