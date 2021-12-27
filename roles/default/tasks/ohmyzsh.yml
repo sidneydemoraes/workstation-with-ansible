@@ -26,8 +26,8 @@
 
   - name: Copy zsh configuration file
     copy:
-      src: ".zshrc"
-      dest: '~/'
+      src: "zshrc"
+      dest: "{{ ansible_user_dir }}/.zshrc"
       force: yes
 
   - name: Copy OhMyZsh configuration file
