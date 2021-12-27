@@ -11,13 +11,6 @@
         update_cache: yes
       changed_when: no
 
-    - name: Create temp dir
-      tags: always
-      file:
-        path: "{{ tmp_dir }}"
-        state: directory
-      check_mode: no
-
   roles:
     - default
     - office
@@ -27,19 +20,6 @@
     - support
     - android
     - games
-
-  tasks:
-
-
-    - name: Install Team Viewer
-      include_tasks: packages/download_and_install_apt_package.yml
-      # tags: "{{ package.tags}}"
-      vars:
-        package:
-          name: Team Viewer
-          tags: teamviewer
-          url: "{{ teamviewer_url }}"
-
 
 
   # Clean Up
@@ -56,10 +36,3 @@
         autoremove: yes
         purge: yes
       changed_when: no
-
-    - name: Remove temp dir
-      tags: always
-      file:
-        path: "{{ tmp_dir }}"
-        state: absent
-      check_mode: no

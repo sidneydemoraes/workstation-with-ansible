@@ -1,4 +1,2 @@
-tmp_dir: "{{ ansible_user_dir }}/tmp/ansible_tmp"
 github_api_first_part: "https://api.github.com/repos"
 github_api_last_part: "releases/lastest"
-
