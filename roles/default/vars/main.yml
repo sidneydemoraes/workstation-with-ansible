@@ -1,5 +1,5 @@
 vivaldi_browser_version: "5.0"
-vivaldi_browser_build: "2497.28"
+vivaldi_browser_build: "2497.32-1"
 vivaldi_browser_file: "vivaldi-stable_{{ vivaldi_browser_version }}.{{ vivaldi_browser_build }}_amd64.deb"
 vivaldi_browser_url: "https://downloads.vivaldi.com/stable/{{ vivaldi_browser_file }}"
 
