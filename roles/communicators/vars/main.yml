@@ -4,5 +4,5 @@ discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ disc
 
 telegram_file: "telegram.tar.xz"
 telegram_url: "https://telegram.org/dl/desktop/linux"
-telegram_dest: "{{ tmp_dir }}/{{ telegram_file }}"
+telegram_dest: "{{ ansible_user_dir }}/{{ telegram_file }}"
 
