@@ -1,0 +1,4 @@
+teams4linux_version: "1.0.20"
+teams4linux_file: "teams-for-linux_1.0.20_amd64.deb"
+teams4linux_url: "https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v{{ teams4linux_version }}/{{ teams4linux_file  }}"
+

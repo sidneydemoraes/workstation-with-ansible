@@ -1,0 +1,10 @@
+localwp_version: "6.1.7"
+localwp_build: "{{ localwp_version }}+5610"
+localwp_file: "local-{{ localwp_version  }}-linux.deb"
+localwp_url: "https://cdn.localwp.com/releases-stable/{{ localwp_build }}/{{ localwp_file }}"
+
+virtualbox_version: "6.1"
+
+vscode_url: "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+sdkman_url: "https://get.sdkman.io"
+pyenv_url: "https://pyenv.run"
