@@ -24,3 +24,15 @@
       path: "{{ telegram_dest }}"
       state: absent
     check_mode: no
+
+- name: Install Discord
+  tags: discord
+  include_role: 
+    name: common
+    tasks_from: download_and_install_apt_package
+  vars:
+    package:
+      name: Discord
+      tags: discord
+      url: "{{ discord_url }}"
+
