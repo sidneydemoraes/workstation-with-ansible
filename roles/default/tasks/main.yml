@@ -1,119 +1,51 @@
-- name: Install base apt packages
-  tags:
-    - default
-    - base
-  become: yes
-  block:
-    - name: Add Universe Repository
-      apt_repository: 
-        repo: "{{ item }}"
-        state: present
-        update_cache: yes
-        validate_certs: no
-      with_items:
-        - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe"
-        - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates universe"
-        - "deb http://security.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-security universe"
-
-    - name: Install packages
-      apt: 
-        name: "{{ item }}"
-        state: latest
-      with_items:
-        - software-properties-common
-        - atop
-        - curl
-        - git
-        - htop
-        - p7zip-full
-        - p7zip-rar
-        - screen
-        - solaar
-        - tar
-        - wget
-
-- name: Base configurations
-  tags:
+- name: Install and setup basic packages
+  tags: 
     - default
     - base
     - dotfiles
-  block:
-    - name: Copy dot files
-      copy:
-        src: "{{ item }}"
-        dest: "{{ ansible_user_dir }}/.{{ item }}"
-        force: yes
-        mode: 600
-      with_items:
-        - "bash_aliases"
-        - "bash_exports"
-        - "bashrc"
-        - "inputrc"
-        - "screenrc"
-        - "gitconfig"
-
-    - name: Copy DIR_COLORS
-      copy:
-        src: "DIR_COLORS"
-        dest: "{{ ansible_user_dir }}"
-        force: yes
-        mode: 600
-
-    - name: Symlink bashrc to bash_profiles
-      file:
-        src: "{{ ansible_user_dir }}/.bashrc"
-        dest: "{{ ansible_user_dir }}/.bash_profile"
-        state: link
-
-- name: SSH configuration
-  tags:
-    - default
-    - base
     - ssh
-  block:
-    - name: Create SSH config directoty
-      file:
-        path: "{{ ansible_user_dir }}/.ssh"
-        state: directory
-        mode: 0700
-
-    - name: Copy SSH config
-      copy:
-        src: "ssh_config"
-        dest: "{{ ansible_user_dir }}/.ssh/config"
-        force: yes
-        mode: 0600
-
-    - name: Copy SSH keys
-      copy:
-        src: "{{ item }}"
-        dest: "{{ ansible_user_dir }}/.ssh"
-        mode: 0600
-        force: yes
-        decrypt: yes
-      with_items:
-        - id_rsa
-        - id_rsa.pub
-        - digitalocean_rsa
-        - digitalocean_rsa.pub
-
-- name: Upgrade Snap
-  become: yes
-  tags:
-    - default
-    - base
     - snap
-  apt:
-    name: snapd
-    state: latest
-    only_upgrade: yes
-
-- name: Install 7zip Desktop
-  become: yes
-  tags:
-    - default
-    - base
     - 7zip
-  snap:
-    name: p7zip-desktop
-    classic: yes
+  include_tasks: base.yml
+
+- name: Install Slimbook Battery
+  tags: slimbook
+  include_role:
+    name: common
+    tasks_from:  install_apt_package
+  vars:
+    package:
+      name: Slimbook Battery
+      tags: slimbook
+      id: simbookbattery
+      apt_repo: "ppa:slimbook/slimbook"
+
+- name: Setup ZSH
+  tags: zsh
+  include_tasks: ohmyzsh.yml
+
+- name: Install Browsers
+  tags: browser
+  include_role:
+    name: common
+    tasks_from: download_and_install_apt_package
+  vars:
+    package:
+      name: Vivaldi Browser
+      tags: browser
+      url: "{{ vivaldi_browser_url }}"
+
+- name: Install Authy
+  tags: authy
+  include_role:
+    name: common
+    tasks_from: install_snap_package
+  vars:
+    package:
+      name: Authy
+      tags: authy
+      id: authy
+
+- name: Include Autokey installation
+  include_tasks: packages/autokey.yml
+  tags: autokey
