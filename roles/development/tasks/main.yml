@@ -1,0 +1,39 @@
+- name: Install NeoVim
+  tags:
+    - vim
+    - neovim
+  include_tasks: vim.yml
+
+- name: Install Tmate and Tmux
+  tags:
+    - tmux
+    - tmate
+  include_tasks: tmux.yml
+
+- name: Install VSCode
+  tags: vscode
+  include_tasks: vscode.yml
+
+- name: Install Java
+  include_tasks: java.yml
+  tags: java
+
+- name: Install Python
+  tags: python
+  include_tasks: python.yml
+
+- name: Install LocalWP
+  tags: localwp
+  include_role:
+    name: common
+    tasks_from: download_and_install_apt_package
+  vars:
+    package:
+      name: LocalWP
+      tags: localwp
+      url: "{{ localwp_url }}"
+
+- name: Install Docker
+  tags: docker
+  include_tasks: docker.yml
+
