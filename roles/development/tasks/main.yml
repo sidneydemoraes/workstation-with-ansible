@@ -37,3 +37,7 @@
   tags: docker
   include_tasks: docker.yml
 
+- name: Install Virtualbox
+  tags: virtualbox
+  include_tasks: virtualbox.yml
+
