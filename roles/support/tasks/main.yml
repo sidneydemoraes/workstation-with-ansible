@@ -1,0 +1,10 @@
+- name: Install Team Viewer
+  tags: teamviewer
+  include_role: 
+    name: common
+    tasks_from: download_and_install_apt_package
+  vars:
+    package:
+      name: Team Viewer
+      tags: teamviewer
+      url: "{{ teamviewer_url }}"
