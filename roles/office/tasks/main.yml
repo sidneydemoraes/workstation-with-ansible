@@ -1,0 +1,16 @@
+- name: Install Calibre
+  tags: calibre
+  include_tasks: calibre.yml
+
+- name: Install LibreOffice
+  tags: libreoffice
+  include_role: 
+    name: common
+    tasks_from: install_apt_package
+  vars:
+    package:
+      name: LibreOffice Oficial
+      tags: libreoffice
+      id: libreoffice
+      apt_repo: "ppa:libreoffice/ppa"
+
