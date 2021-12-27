@@ -1,0 +1,12 @@
+- name: Install Anbox
+  tags: anbox
+  include_role:
+    name: common
+    tasks_from: install_snap_package
+  vars:
+    package:
+      name: Anbox (Android in a Box)
+      tags: anbox
+      id: anbox
+      channel: beta
+
