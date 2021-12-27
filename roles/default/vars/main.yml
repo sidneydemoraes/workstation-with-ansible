@@ -6,4 +6,4 @@ vivaldi_browser_url: "https://downloads.vivaldi.com/stable/{{ vivaldi_browser_fi
 autokey_version: "0.95.10"
 autokey_file: "autokey-gtk_{{ autokey_version }}-0_all.deb"
 autokey_url: "https://github.com/autokey/autokey/releases/download/v{{ autokey_version }}/{{ autokey_file }}"
-autokey_config_dest: "~/.config/autokey"
+autokey_config_dest: "{{ ansible_user_dir }}/.config/autokey"
