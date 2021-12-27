@@ -17,7 +17,7 @@
     package:
       name: Slimbook Battery
       tags: slimbook
-      id: simbookbattery
+      id: slimbookbattery
       apt_repo: "ppa:slimbook/slimbook"
 
 - name: Setup ZSH
