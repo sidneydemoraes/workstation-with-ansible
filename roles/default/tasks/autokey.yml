@@ -1,13 +1,15 @@
 - name: Install and setup Autokey
   tags: autokey
   block:
-  - name: Download and install Autokey
-    become: yes
-    apt: 
-      deb: "{{ autokey_url }}"
+    - name: Download and install Autokey
+      become: yes
+      apt: 
+        deb: "{{ autokey_url }}"
 
-  - name: Import configuration files
-    git:
-      repo: "git@gitlab.com:sidneydemoraes/autokey-config.git"
-      dest: "{{ autokey_config_dest }}"
-      clone: yes
+    - name: Import configuration files
+      git:
+        repo: "git@gitlab.com:sidneydemoraes/autokey-config.git"
+        dest: "{{ autokey_config_dest }}"
+        clone: yes
+
+  ignore_errors: yes

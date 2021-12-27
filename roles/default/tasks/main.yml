@@ -47,5 +47,6 @@
       id: authy
 
 - name: Include Autokey installation
-  include_tasks: packages/autokey.yml
   tags: autokey
+  include_tasks: autokey.yml
+
