@@ -1,0 +1,15 @@
+- name: Install Firejail
+  tags: 
+    - security
+    - firejail
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags:
+        - security
+        - firejail
+  vars:
+    package:
+      name: Firejail
+      id: firejail
