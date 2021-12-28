@@ -15,11 +15,11 @@
 
     - name: Copy tmux configuration file
       copy:
-        src: ".tmux.conf"
-        dest: "~/"
+        src: "tmux.conf"
+        dest: "{{ ansible_user_dir }}/.tmux.conf"
         mode: '664'
 
     - name: Install plugin manager
       git:
         repo: "https://github.com/tmux-plugins/tpm"
-        dest: "~/.tmux/plugins/tpm"
+        dest: "{{ ansible_user_dir }}/.tmux/plugins/tpm"

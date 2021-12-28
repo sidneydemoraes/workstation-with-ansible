@@ -24,6 +24,6 @@
 
     - name: Copy configuration file
       copy:
-        src: '.vimrc'
-        dest: "{{ ansible_user_dir }}"
+        src: 'vimrc'
+        dest: "{{ ansible_user_dir }}/.vimrc"
         force: yes
