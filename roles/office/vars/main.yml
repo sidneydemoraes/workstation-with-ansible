@@ -1,0 +1,1 @@
+calibre_config_dest: "{{ ansible_user_dir }}/Biblioteca do calibre"

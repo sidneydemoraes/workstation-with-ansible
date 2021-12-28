@@ -2,3 +2,11 @@
   tags: calibre
   become: yes
   shell: "wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin"
+
+- name: Import configuration files
+  git:
+    repo: "git@gitlab.com:sidneydemoraes/calibre-backup.git"
+    dest: "{{ calibre_config_dest }}"
+    clone: yes
+  ignore_errors: yes
+
