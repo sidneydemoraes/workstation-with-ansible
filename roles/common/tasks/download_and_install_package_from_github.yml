@@ -1,21 +1,11 @@
 - name: "Preparing installation of {{ package.name }}"
   block:
-    - name: WTF
-      debug:
-        msg: "{{ item.key }}: {{ item.value }}"
-      with_dict: "{{ package }}"
-  
     - name: "Get latest release from {{ package.name }}"
       uri:
         url: "{{ github_api_first_part }}/{{ package.repo }}/{{ github_api_last_part }}"
         return_content: yes
         body_format: json
       register: latest
-
-    - name: WTFF
-      debug:
-        msg: "{{ item.key }}: {{ item.value }}"
-      with_dict: "{{ latest }}"
 
     - name: "Install {{ package.name }} package"
       loop: "{{ latest.json.assets }}"
