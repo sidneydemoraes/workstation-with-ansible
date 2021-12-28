@@ -7,10 +7,11 @@
   include_role: 
     name: common
     tasks_from: install_apt_package
+    apply:
+      tags: libreoffice
   vars:
     package:
       name: LibreOffice Oficial
-      tags: libreoffice
       id: libreoffice
       apt_repo: "ppa:libreoffice/ppa"
 

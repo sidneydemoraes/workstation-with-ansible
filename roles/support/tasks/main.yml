@@ -3,8 +3,9 @@
   include_role: 
     name: common
     tasks_from: download_and_install_apt_package
+    apply:
+      tags: teamviewer
   vars:
     package:
       name: Team Viewer
-      tags: teamviewer
       url: "{{ teamviewer_url }}"

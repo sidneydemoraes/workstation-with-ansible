@@ -3,10 +3,11 @@
   include_role:
     name: common
     tasks_from: install_snap_package
+    apply:
+      tags: anbox
   vars:
     package:
       name: Anbox (Android in a Box)
-      tags: anbox
       id: anbox
       channel: beta
 

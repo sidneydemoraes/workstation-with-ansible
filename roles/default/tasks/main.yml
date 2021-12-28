@@ -13,10 +13,11 @@
   include_role:
     name: common
     tasks_from:  install_apt_package
+    apply:
+      tags: slimbook
   vars:
     package:
       name: Slimbook Battery
-      tags: slimbook
       id: slimbookbattery
       apt_repo: "ppa:slimbook/slimbook"
 
@@ -29,10 +30,11 @@
   include_role:
     name: common
     tasks_from: download_and_install_apt_package
+    apply:
+      tags: browser
   vars:
     package:
       name: Vivaldi Browser
-      tags: browser
       url: "{{ vivaldi_browser_url }}"
 
 - name: Install Authy
@@ -40,10 +42,11 @@
   include_role:
     name: common
     tasks_from: install_snap_package
+    apply:
+      tags: authy
   vars:
     package:
       name: Authy
-      tags: authy
       id: authy
 
 - name: Include Autokey installation

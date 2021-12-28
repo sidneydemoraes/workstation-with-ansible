@@ -14,13 +14,14 @@
     - name: Install packages
       become: yes
       apt: 
-        name: "{{ item }}"
+        name: "{{ packages }}"
         state: latest
-      with_items:
-        - neovim
-        - python3-dev
-        - python3-pip
-        - python3-neovim
+      vars:
+        packages:
+          - neovim
+          - python3-dev
+          - python3-pip
+          - python3-neovim
 
     - name: Copy configuration file
       copy:
