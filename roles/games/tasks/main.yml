@@ -1,16 +1,15 @@
 - name: Install Steam
-  tags:
+  tags: 
     - games
     - steam
   include_role:
     name: common
     tasks_from: download_and_install_apt_package
+    apply:
+      tags: ["games","steam"]
   vars:
     package:
       name: Steam
-      tags: 
-        - games
-        - steam
       url: "{{ steam_url }}"
 
 - name: Install Epic
@@ -20,21 +19,22 @@
   include_role:
     name: common
     tasks_from: download_and_install_package_from_github
+    apply:
+      tags: ["games","epic"]
   vars:
     package:
       name: Epic Games
-      tags:
-        - games
-        - epic
       repo: "{{ epic_repo }}"
 
 - name: Install GOG
-  tags: 
+  tags:
     - games
     - gog
   include_role:
     name: common
     tasks_from: download_and_install_package_from_github
+    apply:
+      tags: ["games","gog"]
   vars:
     package:
       name: GoG
