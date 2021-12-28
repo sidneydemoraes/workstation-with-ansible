@@ -35,7 +35,7 @@
 
   - name: Download PyEnv VirtualEnv
     git:
-      src: "https://github.com/pyenv/pyenv-virtualenv.git"
+      repo: "https://github.com/pyenv/pyenv-virtualenv.git"
       dest: "{{ pyenv_root }}/plugins/pyenv-virtualenv"
       clone: yes
 
