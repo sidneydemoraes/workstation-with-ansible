@@ -15,3 +15,16 @@
       id: libreoffice
       apt_repo: "ppa:libreoffice/ppa"
 
+- name: Install Google Drive folder sync
+  # https://github.com/astrada/google-drive-ocamlfuse#usage
+  tags: gdrive
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags: gdrive
+  vars:
+    package:
+      name: Google Drive OCaml Fuse
+      id: google-drive-ocamlfuse
+      apt_repo: "ppa:alessandro-strada/ppa"
