@@ -1,4 +1,4 @@
-# Last update: 210310.1153
+# Last update: 220131.1236
 # Maintainer: Sidney de Moraes
 
 # Set diplay term
@@ -130,15 +130,6 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/sid/.sdkman"
-[[ -s "/home/sid/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sid/.sdkman/bin/sdkman-init.sh"
-
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:$HOME/.poetry/bin:/usr/local/cuda-11.2/bin:/usr/local/cuda-11.2/targets/x86_64-linux/lib:$PATH
+# Remove duplicate entries from PATH
 export PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '!($0 in a){a[$0];print}' | rev | cut -c1- | rev)
-export LD_LIBRARY_PATH=/usr/local/cuda-11.2/include:/usr/local/cuda-11.2/lib64
-
 
