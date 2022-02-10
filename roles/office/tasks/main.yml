@@ -26,3 +26,15 @@
     package:
       name: RClone
       id: rclone
+
+- name: Install HTMLDoc
+  tags: htmldoc
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags: htmldoc
+  vars:
+    package:
+      name: HTMLDoc
+      id: htmldoc
