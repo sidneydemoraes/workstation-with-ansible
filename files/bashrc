@@ -49,6 +49,11 @@ if [ -f ~/.bash_exports ]; then
 	source ~/.bash_exports
 fi
 
+# Load custom man page colors
+if [ -f ~/.termcap ]; then
+  source ~/.termcap
+fi
+
 # enable programmable completion features (you don't need to enable 
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile 
 # sources /etc/bash.bashrc). 

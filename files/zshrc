@@ -71,7 +71,7 @@ setopt HIST_IGNORE_SPACE
 plugins=(
   poetry
   autopep8
-  colored-man-pages
+# colored-man-pages
   command-not-found
   copyfile
   docker
@@ -126,6 +126,11 @@ fi
 
 if [ -f ~/.bash_exports ]; then
     source ~/.bash_exports
+fi
+
+# Load custom man page colors
+if [ -f ~/.termcap ]; then
+  source ~/.termcap
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

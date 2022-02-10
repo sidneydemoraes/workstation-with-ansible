@@ -51,6 +51,7 @@
         - "inputrc"
         - "screenrc"
         - "gitconfig"
+        - "termcap"
 
     - name: Copy DIR_COLORS
       copy:
