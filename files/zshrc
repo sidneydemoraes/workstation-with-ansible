@@ -71,7 +71,7 @@ setopt HIST_IGNORE_SPACE
 plugins=(
   poetry
   autopep8
-# colored-man-pages
+  colored-man-pages
   command-not-found
   copyfile
   docker
@@ -92,6 +92,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+less_termcap[md]="$(tput bold; tput setaf 14)"  # bold cyan in less/man
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -126,11 +127,6 @@ fi
 
 if [ -f ~/.bash_exports ]; then
     source ~/.bash_exports
-fi
-
-# Load custom man page colors
-if [ -f ~/.termcap ]; then
-  source ~/.termcap
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
