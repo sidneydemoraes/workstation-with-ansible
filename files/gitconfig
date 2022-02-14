@@ -1,5 +1,5 @@
 # Last update:
-# 210625.1701 - Sidney de Moraes
+# 220214.1007 - Sidney de Moraes
 
 [user]
 	name = Sid
@@ -8,6 +8,7 @@
 	autocrlf = input
 	filemode = false
 [alias]
+	acommit = "!f(){ git add . && git commit -m \"@1\"; }; f"
 	head = reset --hard HEAD
 	update = pull --all -p
 	ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
