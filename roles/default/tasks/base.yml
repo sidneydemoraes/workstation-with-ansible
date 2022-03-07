@@ -22,6 +22,7 @@
       with_items:
         - software-properties-common
         - atop
+        - cpulimit
         - curl
         - git
         - htop
