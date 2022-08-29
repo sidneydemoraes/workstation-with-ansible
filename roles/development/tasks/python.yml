@@ -29,19 +29,6 @@
   - name: Install PyEnv
     shell: "curl {{ pyenv_url}} | bash"
 
-  - name: Get PyEnv root directory
-    shell: "pyenv root"
-    register: "pyenv_root"
-
-  - name: Download PyEnv VirtualEnv
-    git:
-      repo: "https://github.com/pyenv/pyenv-virtualenv.git"
-      dest: "{{ pyenv_root }}/plugins/pyenv-virtualenv"
-      clone: yes
-
-  - name: Enable auto activation of Pyenv Virtualenv
-    shell: "echo 'eval \"$(pyenv virtualenv-init -)\"' >> ~/.bash_exports"
-
   - name: Get latest Python version
     shell: 'pyenv install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1'
     register: python_latest_version
