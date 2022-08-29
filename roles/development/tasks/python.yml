@@ -39,3 +39,15 @@
   - name: "Set global Python version to {{ python_latest_version }}"
     shell: "pyenv global {{ python_latest_version }}"
 
+  - name: "Update Pip"
+    shell: "python -m pip install --upgrade pip"
+
+  - name: "Install Pipenv"
+    shell: "python -m pip install --user --upgrade pipenv"
+
+  - name: "Require active virtual env for pip"
+    shell: 'echo "export PIP_REQUIRE_VIRTUALENV=true >> {{ ansible_user_dir }}/.bash_exports'
+
+  - name: "Setup Pipenv to create vitual env inside project"
+    shell: 'echo "export PIPENV_VENV_IN_PROJECT=1" >> {{ ansible_user_dir }}/.bash_exports'
+
