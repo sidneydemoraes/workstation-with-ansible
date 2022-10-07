@@ -1,4 +1,4 @@
-" Last update 20211206.1739
+" Last update 20221007.1757
 " Author: Sidney de Moraes
 " Copy to clipboard demands installation of vim-gtk on Linux
 
@@ -10,17 +10,11 @@ set t_ut=
 " ==  PLUGINS
 "
 " Automatically download vim-plug if it doesn't exist
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
 
 " ******************************************************
 " ==  LOAD PLUGINS
@@ -28,13 +22,12 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.vim/plugged')
 
     " Meta Plugins
-    Plug 'LucHermitte/local_vimrc'            " Drop a _vimrc_local.vim file into any project root directory to setup vim for project only
-        Plug 'LucHermitte/lh-vim-lib'         " Dep for local_vimrc
+    Plug 'LucHermitte/lh-vim-lib'           " Requirement for local_vimrc
+    Plug 'LucHermitte/local_vimrc'          " Drop a _vimrc_local.vim file into any project root directory to setup vim for project only
     Plug 'tpope/vim-eunuch'                   " Adds UNIX shell commands inside VIM
 
     " Theme and Appearance
     Plug 'itchyny/lightline.vim'              " Custom Status Bar
-    " Plug 'vim-airline/vim-airline'            " Lean light status bar
     Plug 'dracula/vim', { 'as': 'dracula' }   " Theme
     Plug 'tomasr/molokai'                     " Theme
     Plug 'ryanoasis/vim-devicons'             " Adds icons to plugins
@@ -53,7 +46,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'preservim/tagbar'                   " Open tag (function/method) bar (:TagbarToggle)
 
     " Navigation
-    Plug 'mg979/vim-visual-multi'             " Sublime feature like for multiple cursors <C-n>, <C-down|C-Up>
+    Plug 'terryma/vim-multiple-cursors'       " Sublime feature like for multiple cursors <C-n>
     Plug 'easymotion/vim-easymotion'          " Improved motions
     Plug 'bkad/CamelCaseMotion'               " Allows creating mappings to navigate through camel/snake case
     Plug 'tpope/vim-surround'                 " Manipulate surrounding symbols
@@ -76,7 +69,6 @@ call plug#begin('~/.vim/plugged')
 
     " Programming
     Plug 'ackyshake/VimCompletesMe'           " Autocomplete
-    " Plug 'valloric/youcompleteme'           " Autocomplete alternative
     Plug 'scrooloose/nerdcommenter'           " Comment functions
     Plug 'sheerun/vim-polyglot'               " Collection of language packs
     Plug 'mattn/emmet-vim'                    " HTML snippets
@@ -216,4 +208,16 @@ function! ToggleFoldingMethod()
     endif
 endfunction
 
+
+let t:is_transparent = 0
+function! Toggle_transparent_background()
+  if t:is_transparent == 0
+    hi Normal ctermbg=NONE
+    let t:is_transparent = 1
+  else
+    hi Normal ctermbg=233
+    let t:is_transparent = 0
+  endif
+endfunction
+nnoremap <C-x><C-t> :call Toggle_transparent_background()<CR>
 
