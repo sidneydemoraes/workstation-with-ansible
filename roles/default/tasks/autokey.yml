@@ -1,10 +1,15 @@
 - name: Install and setup Autokey
   tags: autokey
   block:
-    - name: Download and install Autokey
+    - name: Download and install Autokey Common package
       become: yes
       apt: 
-        deb: "{{ autokey_url }}"
+        deb: "{{ autokey_common_url }}"
+
+    - name: Download and install Autokey GTK package
+      become: yes
+      apt: 
+        deb: "{{ autokey_gtk_url }}"
 
     - name: Import configuration files
       git:
