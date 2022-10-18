@@ -1,6 +1,7 @@
 # Ansible playbook to setup my workstation
 # Last update: 2021.11.22 17.33
 - hosts: localhost
+  gather_facts: yes
   vars_files:
     - vars/main.yml
 
