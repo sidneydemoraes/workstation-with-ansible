@@ -1,14 +1,20 @@
 - name: Install Calibre
-  tags: calibre
+  tags: 
+    - office
+    - calibre
   include_tasks: calibre.yml
 
 - name: Install LibreOffice
-  tags: libreoffice
+  tags: 
+    - office
+    - libreoffice
   include_role: 
     name: common
     tasks_from: install_apt_package
     apply:
-      tags: libreoffice
+      tags: 
+        - office
+        - libreoffice
   vars:
     package:
       name: LibreOffice Oficial
@@ -16,24 +22,32 @@
       apt_repo: "ppa:libreoffice/ppa"
 
 - name: Install Google Drive folder sync
-  tags: gdrive
+  tags: 
+    - office
+    - gdrive
   include_role:
     name: common
     tasks_from: install_apt_package
     apply:
-      tags: gdrive
+      tags: 
+        - office
+        - gdrive
   vars:
     package:
       name: RClone
       id: rclone
 
 - name: Install HTMLDoc
-  tags: htmldoc
+  tags: 
+    - office
+    - htmldoc
   include_role:
     name: common
     tasks_from: install_apt_package
     apply:
-      tags: htmldoc
+      tags: 
+        - office
+        - htmldoc
   vars:
     package:
       name: HTMLDoc
