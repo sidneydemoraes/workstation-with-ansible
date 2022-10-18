@@ -1,5 +1,7 @@
 - name: Install and setup Wine
-  tags: wine
+  tags: 
+      - default
+      - wine
   become: yes
   block:
     - name: Download Wine repository key

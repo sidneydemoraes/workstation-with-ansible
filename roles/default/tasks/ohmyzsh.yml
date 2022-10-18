@@ -1,5 +1,7 @@
 - name: Installing and Setting up Zsh and Oh My Zsh
-  tags: zsh
+  tags: 
+      - default
+      - zsh
   block:
   - name: Install Dependencies
     become: yes

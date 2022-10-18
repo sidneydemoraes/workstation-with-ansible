@@ -1,5 +1,7 @@
 - name: Install and setup Autokey
-  tags: autokey
+  tags: 
+      - default
+      - autokey
   block:
     - name: Download and install Autokey Common package
       become: yes
