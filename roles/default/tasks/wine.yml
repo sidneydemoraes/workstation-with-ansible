@@ -1,47 +1,44 @@
-- name: Add WineHQ repository key
+- name: Install and setup Wine
+  tags: wine
   become: yes
-  apt_key:
-    url: "https://dl.winehq.org/wine-builds/winehq.key"
-    state: present
+  block:
+    - name: Download Wine repository key
+      get_url:
+        url: "{{ wine_repo_key_url }}"
+        dest: "{{ wine_repo_key_dest }}"
+      check_mode: no
 
-- name: Add WineHQ repository
-  become: yes
-  apt_repository:
-    repo: "https://dl.winehq.org/wine-builds/ubuntu/ {{ ansible_distribution_release }} main"
-    state: present
+    - name: Download Wine repository sources
+      get_url:
+        url: "{{ wine_sources_url }}"
+        dest: "{{ wine_sources_dest }}"
 
-- name: Install WineHQ
-  become: yes
-  apt:
-    update_cache: yes
-    name: winehq-stable
-    state: latest
-    install_recommends: yes
-    autoclean: yes
+    - name: Install Wine
+      apt:
+        update_cache: yes
+        name: winehq-devel
+        state: latest
+        install_recommends: yes
 
-- name: Remove outdated version of Winetricks
-  become: yes
-  apt:
-    name: winetricks
-    state: absent
-    purge: yes
+    - name: Remove outdated version of Winetricks
+      apt:
+        name: winetricks
+        state: absent
+        purge: yes
 
-- name: Download updated Winetricks
-  become: yes
-  get_url:
-    url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
-    dest: "/usr/bin/local"
-    mode: "0754"
+    - name: Download updated Winetricks
+      get_url:
+        url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
+        dest: "/usr/bin/local"
+        mode: "0754"
 
-- name: Download Winetricks bash completion
-  become: yes
-  get_url:
-    url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion"
-    dest: "/usr/share/bash-completion/completions/winetricks"
-    force: yes
+    - name: Download Winetricks bash completion
+      get_url:
+        url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion"
+        dest: "/usr/share/bash-completion/completions/winetricks"
+        force: yes
 
-- name: Download Winetrics man pages
-  become: yes
-  get_url:
-    url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.1"
-    dest: "/usr/share/man/man1"
+    - name: Download Winetrics man pages
+      get_url:
+        url: "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.1"
+        dest: "/usr/share/man/man1"

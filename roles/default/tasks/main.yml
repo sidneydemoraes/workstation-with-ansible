@@ -53,3 +53,7 @@
   tags: autokey
   include_tasks: autokey.yml
 
+- name: Include Wine installation
+  tags: wine
+  include_tasks: wine.yml
+

@@ -10,3 +10,8 @@ autokey_base_url: "https://github.com/autokey/autokey/releases/download/v{{ auto
 autokey_gtk_url: "{{ autokey_base_url }}/{{ autokey_gtk_file }}"
 autokey_common_url: "{{ autokey_base_url }}/{{ autokey_common_file }}"
 autokey_config_dest: "{{ ansible_user_dir }}/.config/autokey"
+
+wine_repo_key_url: "https://dl.winehq.org/wine-builds/winehq.key"
+wine_repo_key_dest: "/etc/apt/keyrings/winehq-archive.key"
+wine_sources_url: "https://dl.winehq.org/wine-builds/ubuntu/dists/{{ ansible_distribution_release }}/winehq-{{ ansible_distribution_release }}.sources"
+wine_sources_dest: "/etc/apt/sources.list.d/"
