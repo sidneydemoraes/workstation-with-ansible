@@ -3,53 +3,53 @@
     - dev
     - python
   block:
-  - name: Install dependencies
-    become: yes
-    apt:
-      name: "{{ packages }}"
-      state: latest
-    vars:
-      packages:
-        - make
-        - build-essential
-        - libssl-dev
-        - zlib1g-dev
-        - libbz2-dev
-        - libreadline-dev
-        - libsqlite3-dev
-        - wget
-        - curl
-        - llvm
-        - libncursesw5-dev
-        - xz-utils
-        - tk-dev
-        - libxml2-dev
-        - libxmlsec1-dev
-        - libffi-dev
-        - liblzma-dev
+    - name: Install dependencies
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: latest
+      vars:
+        packages:
+          - make
+          - build-essential
+          - libssl-dev
+          - zlib1g-dev
+          - libbz2-dev
+          - libreadline-dev
+          - libsqlite3-dev
+          - wget
+          - curl
+          - llvm
+          - libncursesw5-dev
+          - xz-utils
+          - tk-dev
+          - libxml2-dev
+          - libxmlsec1-dev
+          - libffi-dev
+          - liblzma-dev
 
-  - name: Install PyEnv
-    shell: "curl {{ pyenv_url}} | bash"
+    - name: Install PyEnv
+      shell: "curl {{ pyenv_url}} | bash"
 
-  - name: Get latest Python version
-    shell: 'pyenv install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1'
-    register: python_latest_version
+    - name: Get latest Python version
+      shell: 'pyenv install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1 | sed "s/^ *//g"'
+      register: python_latest_version
 
-  - name: "Install Python version {{ python_latest_version }}"
-    shell: "pyenv install {{ python_latest_version }}"
+    - name: "Install Python version {{ python_latest_version.stdout }}"
+      shell: "pyenv install {{ python_latest_version.stdout }}"
 
-  - name: "Set global Python version to {{ python_latest_version }}"
-    shell: "pyenv global {{ python_latest_version }}"
+    - name: "Set global Python version to {{ python_latest_version.stdout }}"
+      shell: "pyenv global {{ python_latest_version.stdout }}"
 
-  - name: "Update Pip"
-    shell: "python -m pip install --upgrade pip"
+    - name: Update Pip
+      shell: "python -m pip install --upgrade pip"
 
-  - name: "Install Pipenv"
-    shell: "python -m pip install --user --upgrade pipenv"
+    - name: Install Pipenv
+      shell: "python -m pip install --user --upgrade pipenv"
 
-  - name: "Require active virtual env for pip"
-    shell: 'echo "export PIP_REQUIRE_VIRTUALENV=true >> {{ ansible_user_dir }}/.bash_exports'
+    - name: Require active virtual env for pip
+      shell: 'echo "export PIP_REQUIRE_VIRTUALENV=true" >> {{ ansible_user_dir }}/.bash_exports'
 
-  - name: "Setup Pipenv to create vitual env inside project"
-    shell: 'echo "export PIPENV_VENV_IN_PROJECT=1" >> {{ ansible_user_dir }}/.bash_exports'
+    - name: Setup Pipenv to create vitual env inside project
+      shell: 'echo "export PIPENV_VENV_IN_PROJECT=1" >> {{ ansible_user_dir }}/.bash_exports'
 
