@@ -21,8 +21,8 @@ function dockerps(){
   docker ps | awk '{print $1}' | xargs docker inspect -f '{{ .State.Pid }} {{ .Config.Hostname }} {{ .Name }}'
 }
 
-which tmux && type tmux &> /dev/null && alias tmux='tmux -uS /tmp/shareds'
-which tmate && type tmate &> /dev/null && alias tmate='tmate -uS /tmp/tmate.sock'
+(which tmux && type tmux) &> /dev/null && alias tmux='tmux -uS /tmp/shareds'
+(which tmate && type tmate) &> /dev/null && alias tmate='tmate -uS /tmp/tmate.sock'
 
 # alias resetwifi='sudo dhclient -r wlan0 && sudo dhclient wlan0'
 # alias resetnet='sudo dhclient -r eth0 && sudo dhclient eth0'
