@@ -2,11 +2,13 @@
   tags: zsh
   block:
   - name: Install Dependencies
+    become: yes
     apt:
       name: zsh
       state: latest
 
   - name: Clone Oh My Zsh
+    ignore_errors: yes
     command:
       cmd: 'git clone -c core.autocrlf=input --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
       chdir: "{{ ansible_user_dir }}"
