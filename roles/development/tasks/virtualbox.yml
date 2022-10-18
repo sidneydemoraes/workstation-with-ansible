@@ -1,5 +1,7 @@
 - name: Preparing installation of Virtualbox
-  tags: virtualbox
+  tags: 
+    - dev
+    - virtualbox
   become: yes
   block:
     - name: Add Virtualbox repository key

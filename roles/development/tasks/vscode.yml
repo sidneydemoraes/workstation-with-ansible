@@ -1,5 +1,7 @@
 - name: Download and install VSCode
-  tags: vscode
+  tags: 
+    - dev
+    - vscode
   block:
   - name: Download and install package
     become: yes

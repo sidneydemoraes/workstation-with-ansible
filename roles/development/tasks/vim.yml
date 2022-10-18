@@ -1,5 +1,6 @@
 - name: Install and setup Neovim
   tags: 
+    - dev
     - vim
     - neovim
   block:

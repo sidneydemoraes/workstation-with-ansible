@@ -1,5 +1,7 @@
 - name: Installing and setting up Python
-  tags: python
+  tags: 
+    - dev
+    - python
   block:
   - name: Install dependencies
     become: yes

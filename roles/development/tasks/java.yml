@@ -1,5 +1,7 @@
 - name: Preparing installation of Java and JDK
-  tags: java
+  tags: 
+    - dev
+    - java
   block:
     - name: Installing SDKMan
       shell: "curl -s '{{ sdkman_url }}' | bash"

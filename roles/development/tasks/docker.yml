@@ -1,5 +1,7 @@
 - name: Preparing installation and setup of Docker
-  tags: docker
+  tags: 
+    - dev
+    - docker
   become: yes
   block:
     - name: Uninstalling older versions
