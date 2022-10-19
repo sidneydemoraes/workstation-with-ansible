@@ -2,10 +2,12 @@
   tags: 
     - default
     - base
+    - aptbase
     - dotfiles
     - ssh
     - snap
     - 7zip
+    - solaar
   include_tasks: base.yml
 
 - name: Install Slimbook Battery

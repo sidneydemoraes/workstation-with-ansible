@@ -2,6 +2,7 @@
   tags:
     - default
     - base
+    - aptbase
   become: yes
   block:
     - name: Add Universe Repository
@@ -29,7 +30,6 @@
         - p7zip-full
         - p7zip-rar
         - screen
-        - solaar
         - tar
         - wget
 
@@ -118,3 +118,23 @@
   snap:
     name: p7zip-desktop
     classic: yes
+
+- name: Install Solaar
+  tags:
+    - default
+    - base
+    - solaar
+  include_role: 
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags: 
+        - default
+        - base
+        - solaar
+  vars:
+    package:
+      name: Solaar
+      apt_repo: "ppa:solaar-unifying/stable"
+      id: solaar
+
