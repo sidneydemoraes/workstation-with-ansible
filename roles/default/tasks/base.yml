@@ -8,7 +8,6 @@
       apt_repository: 
         repo: "{{ item }}"
         state: present
-        update_cache: yes
         validate_certs: no
       with_items:
         - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe"
@@ -19,6 +18,7 @@
       apt: 
         name: "{{ item }}"
         state: latest
+        update_cache: yes
       with_items:
         - software-properties-common
         - atop
