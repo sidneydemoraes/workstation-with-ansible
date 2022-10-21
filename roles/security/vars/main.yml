@@ -1,0 +1,4 @@
+vpn_version: "1.0.0"
+vpn_file: "nordvpn-release_{{ vpn_version }}_all.deb"
+vpn_url: "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/{{ vpn_file }}"
+
