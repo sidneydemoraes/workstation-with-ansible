@@ -2,6 +2,7 @@
   tags: 
     - office
     - calibre
+    - ebooks
   include_tasks: calibre.yml
 
 - name: Install LibreOffice

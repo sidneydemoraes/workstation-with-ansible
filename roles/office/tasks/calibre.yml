@@ -1,9 +1,14 @@
 - name: Install Calibre
-  tags: calibre
+  tags: 
+    - office
+    - calibre
   become: yes
   shell: "wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin"
 
 - name: Import configuration files
+  tags: 
+      - office
+      - ebooks
   git:
     repo: "git@gitlab.com:sidneydemoraes/calibre-backup.git"
     dest: "{{ calibre_config_dest }}"
