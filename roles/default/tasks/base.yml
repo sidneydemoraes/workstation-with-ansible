@@ -32,6 +32,7 @@
         - screen
         - tar
         - wget
+        - gparted
 
 - name: Base configurations
   tags:
