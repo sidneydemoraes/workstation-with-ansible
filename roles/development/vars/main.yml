@@ -9,6 +9,3 @@ vscode_url: "https://code.visualstudio.com/sha/download?build=stable&os=linux-de
 sdkman_url: "https://get.sdkman.io"
 pyenv_url: "https://pyenv.run"
 
-termbrowser_version: "1.8.0"
-termbrowser_file: "browsh_{{ termbrowser_version }}_linux_amd64.deb"
-termbrowser_url: "https://github.com/browsh-org/browsh/releases/download/v1.8.0/{{ termbrowser_file }}"

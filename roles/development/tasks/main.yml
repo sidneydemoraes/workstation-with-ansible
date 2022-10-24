@@ -12,20 +12,6 @@
     - tmate
   include_tasks: tmux.yml
 
-- name: Install Terminal Browser
-  tags:
-    - termbrowser
-  include_role:
-    name: common
-    tasks_from: download_and_install_apt_package
-    apply:
-      tags:
-        - termbrowser
-  vars:
-    package:
-      name: Browsh
-      url: "{{ termbrowser_url }}"
-
 - name: Install VSCode
   tags: 
     - dev
