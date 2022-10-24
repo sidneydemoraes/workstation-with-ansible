@@ -12,6 +12,20 @@
     - tmate
   include_tasks: tmux.yml
 
+- name: Install Lynx Terminal Browser
+  tags:
+    - lynx
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags:
+        - lynx
+  vars:
+    package:
+      name: Lynx Browser
+      id: lynx
+
 - name: Install VSCode
   tags: 
     - dev
