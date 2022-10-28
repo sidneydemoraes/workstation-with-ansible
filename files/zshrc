@@ -15,8 +15,7 @@ export ZSH=~/.oh-my-zsh
 # ZSH_THEME="sid"
 
 # Para Detalhes: https://medium.com/@ivanaugustobd/seu-terminal-pode-ser-muito-muito-mais-produtivo-3159c8ef77b2
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE="nerdfont-complete"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -69,7 +68,6 @@ setopt HIST_IGNORE_SPACE
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  poetry
   autopep8
   colored-man-pages
   command-not-found

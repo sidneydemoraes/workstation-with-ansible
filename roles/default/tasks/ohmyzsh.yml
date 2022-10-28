@@ -11,9 +11,10 @@
 
   - name: Clone Oh My Zsh
     ignore_errors: yes
-    command:
-      cmd: 'git clone -c core.autocrlf=input --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
-      chdir: "{{ ansible_user_dir }}"
+    git:
+      repo: 'https://github.com/robbyrussell/oh-my-zsh.git'
+      dest: "{{ ansible_user_dir }}/.oh-my-zsh"
+      depth: 1
 
   - name: Adjust Oh My Zsh files permissions
     become: yes
@@ -28,14 +29,37 @@
       name: "{{ ansible_user_id }}"
       shell: '/bin/zsh'
 
+  - name: Clone Nerd-Fonts Repository
+    git:
+      repo: "https://github.com/ryanoasis/nerd-fonts.git"
+      dest: "{{ ansible_user_dir }}/.nerd-fonts"
+      depth: 1
+
+  - name: Install Nerd-Fonts
+    command:
+      cmd: "bash -c install.sh -C"
+      chdir: "{{ ansible_user_dir }}/.nerd-fonts"
+
+  - name: Remove Nerd-Fonts Repository
+    file:
+      path: "{{ ansible_user_dir }}/.nerd-fonts"
+      state: absent
+
+  - name: Install Powerlevel10k Theme
+    git:
+      repo: "https://github.com/romkatv/powerlevel10k.git"
+      dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/powerlevel10k"
+      depth: 1
+
+  - name: Copy OhMyZsh personal theme file
+    copy:
+      src: "sid.zsh-theme"
+      dest: "~/.oh-my-zsh/themes/"
+      force: yes
+
   - name: Copy zsh configuration file
     copy:
       src: "zshrc"
       dest: "{{ ansible_user_dir }}/.zshrc"
       force: yes
 
-  - name: Copy OhMyZsh configuration file
-    copy:
-      src: "sid.zsh-theme"
-      dest: "~/.oh-my-zsh/themes/"
-      force: yes
