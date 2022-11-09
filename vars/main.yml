@@ -1,2 +1,2 @@
 github_api_first_part: "https://api.github.com/repos"
-github_api_last_part: "releases/lastest"
+github_api_last_part: "releases/latest"
