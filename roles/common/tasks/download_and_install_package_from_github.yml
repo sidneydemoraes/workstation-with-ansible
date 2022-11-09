@@ -7,6 +7,11 @@
         body_format: json
       register: latest
 
+    - name: Print variable for debugging purposes
+      debug:
+        var: latest
+        verbosity: 1
+
     - name: "Install {{ package.name }} package"
       loop: "{{ latest.json.assets }}"
       when: "'.deb' in item.name"
