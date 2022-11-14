@@ -70,3 +70,18 @@
       name: Obsidian
       url: "{{ obsidian_url }}"
 
+- name: Install Gimp
+  tags:
+    - office
+    - gimp
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags:
+        - office
+        - gimp
+  vars:
+    package:
+      name: Gimp
+      id: gimp
