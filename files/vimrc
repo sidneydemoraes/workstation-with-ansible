@@ -1,4 +1,4 @@
-" Last update 20221007.1757
+" Last update 20221128.1053
 " Author: Sidney de Moraes
 " Copy to clipboard demands installation of vim-gtk on Linux
 
@@ -11,7 +11,7 @@ set t_ut=
 "
 " Automatically download vim-plug if it doesn't exist
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  silent !curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
