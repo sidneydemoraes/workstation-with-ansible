@@ -37,8 +37,7 @@
 
   - name: Install Nerd-Fonts
     command:
-      cmd: "bash -c install.sh -C"
-      chdir: "{{ ansible_user_dir }}/.nerd-fonts"
+      cmd: "bash -c {{ ansible_user_dir }}/.nerd-fonts/install.sh"
 
   - name: Remove Nerd-Fonts Repository
     file:
