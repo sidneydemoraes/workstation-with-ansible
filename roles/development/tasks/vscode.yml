@@ -9,5 +9,4 @@
       deb: "{{ vscode_url }}"
 
   - name: Install sync extenstion
-    become: yes
     command: "code --install-extension shan.code-settings-sync"
