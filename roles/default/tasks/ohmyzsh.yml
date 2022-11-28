@@ -51,6 +51,12 @@
       dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/powerlevel10k"
       depth: 1
 
+  - name: Install ZSH Autosuggestions plugin
+    shell: "git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+
+  - name: Install ZSH Syntax Highlighting plugin
+    shell: "git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+
   - name: Copy OhMyZsh personal theme file
     copy:
       src: "sid.zsh-theme"
