@@ -1,28 +1,13 @@
-- name: Install and setup Neovim
+- name: Install and setup Vim
   tags: 
     - dev
     - vim
-    - neovim
   block:
-    - name: Add NeoVim PPA
-      become: yes
-      apt_repository: 
-        repo: ppa:neovim-ppa/stable
-        state: present
-        update_cache: yes
-        validate_certs: no
-
-    - name: Install packages
+    - name: Install package
       become: yes
       apt: 
-        name: "{{ packages }}"
+        name: vim
         state: latest
-      vars:
-        packages:
-          - neovim
-          - python3-dev
-          - python3-pip
-          - python3-neovim
 
     - name: Copy configuration file
       copy:

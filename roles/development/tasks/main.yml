@@ -1,8 +1,7 @@
-- name: Install NeoVim
+- name: Install Vim
   tags:
     - dev
     - vim
-    - neovim
   include_tasks: vim.yml
 
 - name: Install Tmate and Tmux
