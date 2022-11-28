@@ -11,7 +11,9 @@
   include_tasks: base.yml
 
 - name: Install Slimbook Battery
-  tags: slimbook
+  tags: 
+    - default
+    - slimbook
   include_role:
     name: common
     tasks_from:  install_apt_package
@@ -24,38 +26,58 @@
       apt_repo: "ppa:slimbook/slimbook"
 
 - name: Setup ZSH
-  tags: zsh
+  tags: 
+    - default
+    - base
+    - zsh
   include_tasks: ohmyzsh.yml
 
 - name: Install Browsers
-  tags: browser
+  tags: 
+    - default
+    - base
+    - browser
   include_role:
     name: common
     tasks_from: download_and_install_apt_package
     apply:
-      tags: browser
+      tags: 
+        - default
+        - base
+        - browser
   vars:
     package:
       name: Vivaldi Browser
       url: "{{ vivaldi_browser_url }}"
 
 - name: Install Authy
-  tags: authy
+  tags: 
+    - default
+    - base
+    - authy
   include_role:
     name: common
     tasks_from: install_snap_package
     apply:
-      tags: authy
+      tags: 
+        - default
+        - base
+        - authy
   vars:
     package:
       name: Authy
       id: authy
 
 - name: Include Autokey installation
-  tags: autokey
+  tags: 
+    - default
+    - autokey
   include_tasks: autokey.yml
 
 - name: Include Wine installation
-  tags: wine
+  tags: 
+    - default
+    - base
+    - wine
   include_tasks: wine.yml
 

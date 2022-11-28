@@ -17,6 +17,7 @@
 - name: Install NordVPN
   tags:
     - security
+    - base
     - vpn
   block:
     - name: Install Repository
@@ -26,6 +27,7 @@
         apply:
           tags: 
             - security
+            - base
             - vpn
       vars:
         package:
@@ -39,6 +41,7 @@
         apply:
           tags:
             - security
+            - base
             - vpn
       vars:
         package:

@@ -1,6 +1,7 @@
 - name: Install and setup Vim
   tags: 
     - dev
+    - base
     - vim
   block:
     - name: Install package

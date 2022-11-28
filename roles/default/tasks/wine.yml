@@ -1,6 +1,7 @@
 - name: Install and setup Wine
   tags: 
       - default
+      - base
       - wine
   become: yes
   block:

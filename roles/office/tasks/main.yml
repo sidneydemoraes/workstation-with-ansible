@@ -25,6 +25,7 @@
 - name: Install Google Drive folder sync
   tags: 
     - office
+    - base
     - gdrive
   include_role:
     name: common
@@ -32,6 +33,7 @@
     apply:
       tags: 
         - office
+        - base
         - gdrive
   vars:
     package:
@@ -57,6 +59,7 @@
 - name: Install Obsidian
   tags:
     - office
+    - base
     - obsidian
   include_role:
     name: common
@@ -73,6 +76,7 @@
 - name: Install Gimp
   tags:
     - office
+    - base
     - gimp
   include_role:
     name: common

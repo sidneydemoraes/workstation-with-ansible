@@ -1,6 +1,7 @@
 - name: Installing and Setting up Zsh and Oh My Zsh
   tags: 
       - default
+      - base
       - zsh
   block:
   - name: Install Dependencies

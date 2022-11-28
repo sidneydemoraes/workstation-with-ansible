@@ -1,6 +1,7 @@
 - name: Download and install VSCode
   tags: 
     - dev
+    - base
     - vscode
   block:
   - name: Download and install package

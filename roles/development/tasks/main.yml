@@ -1,12 +1,14 @@
 - name: Install Vim
   tags:
     - dev
+    - base
     - vim
   include_tasks: vim.yml
 
 - name: Install Tmate and Tmux
   tags:
     - dev
+    - base
     - tmux
     - tmate
   include_tasks: tmux.yml
@@ -14,6 +16,7 @@
 - name: Install VSCode
   tags: 
     - dev
+    - base
     - vscode
   include_tasks: vscode.yml
 
@@ -26,6 +29,7 @@
 - name: Install Python
   tags: 
     - dev
+    - base
     - python
   include_tasks: python.yml
 

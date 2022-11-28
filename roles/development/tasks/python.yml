@@ -1,6 +1,7 @@
 - name: Installing and setting up Python
   tags: 
     - dev
+    - base
     - python
   block:
     - name: Install dependencies
