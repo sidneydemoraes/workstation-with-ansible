@@ -45,7 +45,7 @@
         src: "{{ item }}"
         dest: "{{ ansible_user_dir }}/.{{ item }}"
         force: yes
-        mode: 600
+        mode: 0600
       with_items:
         - "bash_aliases"
         - "bash_exports"
@@ -59,7 +59,7 @@
         src: "DIR_COLORS"
         dest: "{{ ansible_user_dir }}"
         force: yes
-        mode: 600
+        mode: 0600
 
     - name: Symlink bashrc to bash_profiles
       file:
