@@ -31,21 +31,44 @@
     - name: Install PyEnv
       shell: "curl {{ pyenv_url}} | bash"
 
+    - name: Add PyEnv to path to dotfiles.
+      blockinfile:
+        state: present
+        insertafter: EOF
+        dest: "{{ ansible_user_dir }}/{{item}}"
+        content: |
+          export PYENV_ROOT="$HOME/.pyenv"
+          command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+          eval "$(pyenv init -)"
+          eval "$(pyenv virtualenv-init -)"
+      with_items:
+        - .bashrc
+        - .profile
+        - .zshrc
+
+    - name: Set PyenvPath
+      set_fact:
+        pyenv_path: "{{ ansible_user_dir }}/.pyenv/bin/pyenv"
+
     - name: Get latest Python version
-      shell: 'pyenv install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1 | sed "s/^ *//g"'
+      shell: '{{ pyenv_path}} install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1 | sed "s/^ *//g"'
       register: python_latest_version
 
     - name: "Install Python version {{ python_latest_version.stdout }}"
-      shell: "pyenv install {{ python_latest_version.stdout }}"
+      shell: "{{ pyenv_path}} install {{ python_latest_version.stdout }}"
 
     - name: "Set global Python version to {{ python_latest_version.stdout }}"
-      shell: "pyenv global {{ python_latest_version.stdout }}"
+      shell: "{{ pyenv_path}} global {{ python_latest_version.stdout }}"
 
     - name: Update Pip
       shell: "python -m pip install --upgrade pip"
+      args:
+        executable: /bin/bash
 
     - name: Install Pipenv
       shell: "python -m pip install --user --upgrade pipenv"
+      args:
+        executable: /bin/bash
 
     - name: Require active virtual env for pip
       shell: 'grep -qxF "export PIP_REQUIRE_VIRTUALENV=true" {{ ansible_user_dir }}/.bash_exports || echo "export PIP_REQUIRE_VIRTUALENV=true" >> {{ ansible_user_dir }}/.bash_exports'
