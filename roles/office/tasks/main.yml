@@ -89,3 +89,20 @@
     package:
       name: Gimp
       id: gimp
+
+- name: Install VLC
+  tags:
+    - office
+    - vlc
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags:
+        - office
+        - vlc
+  vars:
+    package:
+      name: VLC
+      id: vlc
+
