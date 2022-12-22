@@ -1,4 +1,4 @@
-# Last update: 220131.1236
+# Last update: 221222.1042
 # Maintainer: Sidney de Moraes
 
 # Set diplay term
@@ -125,6 +125,10 @@ fi
 
 if [ -f ~/.bash_exports ]; then
     source ~/.bash_exports
+fi
+
+if [ -f ~/.bash_init ]; then
+    source ~/.bash_init
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

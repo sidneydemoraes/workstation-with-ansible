@@ -1,4 +1,5 @@
-    # Last update 210203.1610
+# Last update: 221222.1042
+# Maintainer: Sidney de Moraes
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
@@ -41,12 +42,17 @@ esac
 
 # Load custom aliases
 if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 # Load custom environment variables
 if [ -f ~/.bash_exports ]; then
-	source ~/.bash_exports
+    source ~/.bash_exports
+fi
+
+# Load custom initialization scripts
+if [ -f ~/.bash_init ]; then
+    source ~/.bash_init
 fi
 
 # enable programmable completion features (you don't need to enable 
