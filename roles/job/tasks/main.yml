@@ -4,7 +4,7 @@
     - teams
   include_role:
     name: common
-    tasks_from: download_and_install_apt_package
+    tasks_from: download_and_install_package_from_github
     apply:
       tags: 
         - base
@@ -12,5 +12,5 @@
   vars:
     package:
       name: Teams4Linux
-      url: "{{ teams4linux_url }}"
+      repo: "IsmaelMartinez/teams-for-linux"
 

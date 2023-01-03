@@ -15,7 +15,6 @@
     - name: "Install {{ package.name }} package"
       loop: "{{ latest.json.assets }}"
       when: "{{ '.deb' in item.name and 'arm64' not in item.name and 'armv' not in item.name }}"
-      #when: "{{ item.name | regex_search('.*(?<!amr64)(?<!armv7l)\\.deb', ignorecase=True) }}"
       become: yes
       apt:
         deb: "{{ item.browser_download_url }}"
