@@ -16,5 +16,8 @@
         name: mate-optimus
         state: latest
 
+    - name: Fix Nvidia blacklist conf
+      command: sed -i -r 's/^(alias nvidia off)/#\1/' /lib/modprobe.d/blacklist-nvidia.conf
+
     - name: Reboot
       reboot:
