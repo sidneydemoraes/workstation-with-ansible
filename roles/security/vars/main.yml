@@ -2,3 +2,7 @@ vpn_version: "1.0.0"
 vpn_file: "nordvpn-release_{{ vpn_version }}_all.deb"
 vpn_url: "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/{{ vpn_file }}"
 
+tor_version: "12.0.2"
+tor_file: "tor-browser-linux64-{{ tor_version }}_ALL.tar.xz"
+tor_url: "https://www.torproject.org/dist/torbrowser/{{ tor_version }}/{{ tor_file }}"
+tor_dest: "{{ applications_dir }}/tor-browser"

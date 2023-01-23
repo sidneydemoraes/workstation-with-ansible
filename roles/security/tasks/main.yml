@@ -52,18 +52,26 @@
   tags:
     - security
     - tor
-  include_role:
-    name: common
-    tasks_from: install_apt_package
-    apply:
-      tags:
-        - security
-        - tor
-  vars:
-    package:
-      name: Tor Browser
-      id: "{{ item }}"
-  with_items:
-    - tor
-    - torbrowser-launcher
+  block:
+    - name: Download package
+      get_url:
+        url: "{{ tor_url }}"
+        dest: "{{ tmp_dir }}"
+      check_mode: no
+
+    - name: Extract package
+      unarchive:
+        src: "{{ tmp_dir }}/{{ tor_file }}"
+        dest: "{{ applications_dir }}"
+
+    - name: Set appropriate permissions
+      file:
+        path: "{{ tor_dest }}/start-tor-browser.desktop"
+        mode: "0750"
+
+    - name: Remove package
+      file:
+        path: "{{ tmp_dir }}/{{ tor_file }}"
+        state: absent
+      check_mode: no
 

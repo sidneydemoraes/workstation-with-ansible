@@ -1,2 +1,6 @@
 github_api_first_part: "https://api.github.com/repos"
 github_api_last_part: "releases/latest"
+
+tmp_dir: "{{ ansible_user_dir }}/tmp"
+applications_dir: "{{ ansible_user_dir }}/.local/share"
+desktop_dir: "{{ ansible_user_dir }}/.local/share/applications"
