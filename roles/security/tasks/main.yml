@@ -48,3 +48,22 @@
           name: NordVPN package
           id: nordvpn
 
+- name: Install Tor Browser
+  tags:
+    - security
+    - tor
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags:
+        - security
+        - tor
+  vars:
+    package:
+      name: Tor Browser
+      id: "{{ item }}"
+  with_items:
+    - tor
+    - torbrowser-launcher
+
