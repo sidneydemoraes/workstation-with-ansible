@@ -1,0 +1,26 @@
+- name: Installing and setting up NodeJS
+  tags: 
+    - dev
+    - node
+  block:
+
+    - name: Install Node Version Manager
+      shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash"
+      args:
+        creates: "{{ ansible_user_dir }}/.nvm/nvm.sh"
+
+    - name: Add NVM to dotfiles.
+      blockinfile:
+        state: present
+        insertafter: EOF
+        dest: "{{ ansible_user_dir }}/{{item}}"
+        content: |
+
+          # Load NVM
+          export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+      with_items:
+        - .bashrc
+        - .profile
+        - .zshrc
+

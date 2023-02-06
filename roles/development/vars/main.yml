@@ -9,3 +9,4 @@ vscode_url: "https://code.visualstudio.com/sha/download?build=stable&os=linux-de
 sdkman_url: "https://get.sdkman.io"
 pyenv_url: "https://pyenv.run"
 
+nvm_version: "0.39.3"
