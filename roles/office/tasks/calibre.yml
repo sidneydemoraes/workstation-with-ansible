@@ -15,3 +15,13 @@
     clone: yes
   ignore_errors: yes
 
+- name: Import PDF 2 Kindle Resizer
+  tags:
+    - office
+    - k2pdf
+  copy:
+    src: "k2pdfopt"
+    dest: "{{ ansible_user_dir }}/.local/bin"
+    force: yes
+    mode: 0744
+
