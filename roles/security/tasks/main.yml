@@ -12,7 +12,11 @@
   vars:
     package:
       name: Firejail
-      id: firejail
+      id: "{{ item }}"
+      apt_repo: "ppa:deki/firejail"
+  with_items:
+    - firejail
+    - firejail-profiles
 
 - name: Install NordVPN
   tags:
