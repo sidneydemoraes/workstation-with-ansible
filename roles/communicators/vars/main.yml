@@ -6,3 +6,5 @@ telegram_file: "telegram.tar.xz"
 telegram_url: "https://telegram.org/dl/desktop/linux"
 telegram_dest: "{{ ansible_user_dir }}/{{ telegram_file }}"
 
+zoom_version: "5.14.7.2928"
+zoom_url: "https://zoom.us/client/{{ zoom_version }}/zoom_amd64.deb"

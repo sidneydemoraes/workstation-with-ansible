@@ -42,3 +42,19 @@
       name: Discord
       url: "{{ discord_url }}"
 
+- name: Install Zoom
+  tags:
+    - comm
+    - zoom
+  include_role:
+    name: common
+    tasks_from: download_and_install_apt_package
+    apply:
+      tags:
+        - comm
+        - zoom
+  vars:
+    package:
+      name: Zoom
+      url: "{{ zoom_url }}"
+
