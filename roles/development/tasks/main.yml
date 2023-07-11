@@ -67,3 +67,19 @@
     - virtualbox
   include_tasks: virtualbox.yml
 
+- name: Install GPick
+  tags:
+    - dev
+    - gpick
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags:
+        - dev
+        - gpick
+  vars:
+    package:
+      name: GPick
+      id: gpick
+
