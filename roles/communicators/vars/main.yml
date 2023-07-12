@@ -1,4 +1,4 @@
-discord_version: "0.0.27"
+discord_version: "0.0.28"
 discord_file: "discord-{{ discord_version }}.deb"
 discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ discord_file }}"
 
