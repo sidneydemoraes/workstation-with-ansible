@@ -1,6 +1,13 @@
 - name: "Preparing installation of {{ package.name }}"
   become: yes
   block:
+    - name: "Add APT key for {{ package.name }} Repository"
+      apt_key:
+        id: "{{ package.key_id }}"
+        url: "{{ package.key_url }}"
+        state: "{{ package.key_state | default('present') }}"
+      when: package.key_id is defined and package.key_url is defined
+
     - name: "Add {{ package.name }} Repository"
       apt_repository: 
         repo: "{{ package.apt_repo }}"
