@@ -1,13 +1,28 @@
-- name: Install Anbox
-  tags: anbox
-  include_role:
-    name: common
-    tasks_from: install_snap_package
-    apply:
-      tags: anbox
-  vars:
-    package:
-      name: Anbox (Android in a Box)
-      id: anbox
-      channel: beta
+- name: Installing and setting up Waydroid
+  tags: android
+  become: yes
+  block:
+    - name: Install dependencies
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: latest
+      vars:
+        packages:
+          - curl
+          - ca-certificates
+
+    - name: Add official repository
+      shell: "curl https://repo.waydro.id | bash"
+
+    - name: Install Waydroid
+      include_role:
+        name: common
+        tasks_from: install_apt_package
+        apply:
+          tags: android
+      vars:
+        package:
+          name: Waydroid 
+          id: waydroid
 
