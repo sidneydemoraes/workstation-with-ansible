@@ -8,13 +8,19 @@
         state: "{{ package.key_state | default('present') }}"
       when: package.key_id is defined and package.key_url is defined
 
-    - name: "Add GPG key from Keyserver"
+    - name: "Add default GPG key from Keyserver"
       get_url:
         url: "{{ package.keyserver_url }}"
         dest: "/etc/apt/trusted.gpg.d/{{ package.name }}.asc"
         mode: 0644
         force: true
-      when: package.keyserver_url is defined
+      when: package.keyserver_url is defined and package.key_id is not defined
+
+    - name: "Add GPG key {{ package.key_id }} from Keyserver"
+      apt_key:
+        id: "{{ package.key_id }}"
+        keyserver: "{{ package.keyserver_url }}"
+      when: package.keyserver_url is defined and package.key_id is defined
 
     - name: "Add {{ package.name }} Repository"
       apt_repository:
