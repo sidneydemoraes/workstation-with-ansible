@@ -23,34 +23,9 @@
     - security
     - base
     - vpn
-  block:
-    - name: Install Repository
-      include_role:
-        name: common
-        tasks_from: download_and_install_apt_package
-        apply:
-          tags: 
-            - security
-            - base
-            - vpn
-      vars:
-        package:
-          name: NordVPN Repository
-          url: "{{ vpn_url }}"
+  become: yes
+  shell: "curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh | bash"
 
-    - name: Install NordVPN package
-      include_role:
-        name: common
-        tasks_from: install_apt_package
-        apply:
-          tags:
-            - security
-            - base
-            - vpn
-      vars:
-        package:
-          name: NordVPN package
-          id: nordvpn
 
 - name: Install Tor Browser
   tags:
