@@ -27,3 +27,8 @@
           name: Waydroid 
           id: waydroid
 
+- name: Install Anbox
+  tags: anbox
+  become: yes
+  command: snap install --devmode --edge anbox
+
