@@ -11,6 +11,7 @@
         packages:
           - curl
           - ca-certificates
+          - weston
 
     - name: Add official repository
       shell: "curl https://repo.waydro.id | bash"
