@@ -3,7 +3,6 @@
   become: yes
   block:
     - name: Install dependencies
-      become: yes
       apt:
         name: "{{ packages }}"
         state: latest
@@ -27,8 +26,30 @@
           name: Waydroid 
           id: waydroid
 
-- name: Install Anbox
+- name: Install Anbox with GAPPS
   tags: anbox
   become: yes
-  command: snap install --devmode --edge anbox
+  block:
+    - name: Installing Anbox application
+      command: snap install --devmode --edge anbox
 
+    - name: Install PreReqs of GAPPS installation
+      include_role:
+        name: common
+        tasks_from: install_apt_package
+        apply:
+          tags: anbox
+      vars:
+        package:
+          id: "{{ item }}"
+          name: "{{ item }}"
+      with_items:
+        - wget
+        - curl
+        - lzip
+        - tar
+        - unzip
+        - squashfs-tools
+
+    - name: Installing GAPPS in Anbox
+      shell: "curl -s https://raw.githubusercontent.com/geeks-r-us/anbox-playstore-installer/master/install-playstore.sh | bash"
