@@ -15,7 +15,7 @@
 
     - name: Import configuration files
       git:
-        repo: "git@gitlab.com:sidneydemoraes/autokey-config.git"
+        repo: "git@github.com:sidneydemoraes/autokey-config.git"
         dest: "{{ autokey_config_dest }}"
         clone: yes
 
