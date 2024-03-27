@@ -1,9 +1,10 @@
 # Last update:
-# 20240326,1743 - Sidney de Moraes
+# 20240327,1630 - Sidney de Moraes
 
 alias ls='ls --group-directories --color'
-alias lsa='ls -A'
 alias lsd='ls -d */'
+alias lsa='ls -A'
+alias lsad='{ ls -d */; ls -d .*/; }'
 alias ll='ls -lh'
 alias llt='ll --sort=time'
 alias lls='ll --sort=size'
@@ -13,7 +14,7 @@ alias la='ll -A'
 alias lat='la --sort=time'
 alias las='la --sort=size'
 alias lae='la --sort=extension'
-alias lad='la -d */'
+alias lad='{ la -d */; la -d .*/; }'
 alias less='less -R'
 alias grep=grep -I --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}
 
