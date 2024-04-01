@@ -1,6 +1,4 @@
-discord_version: "0.0.45"
-discord_file: "discord-{{ discord_version }}.deb"
-discord_url: "https://dl.discordapp.net/apps/linux/{{ discord_version }}/{{ discord_file }}"
+discord_url: "https://discord.com/api/download?platform=linux&format=deb"
 
 telegram_file: "telegram.tar.xz"
 telegram_url: "https://telegram.org/dl/desktop/linux"
