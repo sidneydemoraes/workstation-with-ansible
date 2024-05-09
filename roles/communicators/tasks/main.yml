@@ -58,3 +58,19 @@
       name: Zoom
       url: "{{ zoom_url }}"
 
+- name: Install Skype
+  tags:
+    - comm
+    - skype
+  include_role:
+    name: common
+    tasks_from: install_snap_package
+    apply:
+       tags:
+         - comm
+         - skype
+  vars:
+    package:
+      name: Skype
+      id: skype
+
