@@ -32,7 +32,7 @@
     - name: Install PyEnv
       shell: "curl {{ pyenv_url}} | bash"
 
-    - name: Add PyEnv to path to dotfiles.
+    - name: Add PyEnv to path in dotfiles.
       blockinfile:
         state: present
         insertafter: EOF
@@ -76,4 +76,12 @@
 
     - name: Setup Pipenv to create vitual env inside project
       shell: 'grep -qxF "export PIPENV_VENV_IN_PROJECT=1" {{ ansible_user_dir }}/.bash_exports || echo "export PIPENV_VENV_IN_PROJECT=1" >> {{ ansible_user_dir }}/.bash_exports'
+
+
+- name: Installing UV
+  tags: 
+    - dev
+    - base
+    - python
+  shell: "curl -LsSf https://astral.sh/uv/install.sh | sh"
 
