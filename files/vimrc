@@ -1,4 +1,4 @@
-" Last update 20221007.1757
+" Last update 20240925.1305
 " Author: Sidney de Moraes
 " Copy to clipboard demands installation of vim-gtk on Linux
 
@@ -48,11 +48,11 @@ call plug#begin('~/.vim/plugged')
     " Navigation
     Plug 'terryma/vim-multiple-cursors'       " Sublime feature like for multiple cursors <C-n>
     Plug 'easymotion/vim-easymotion'          " Improved motions
-    Plug 'bkad/CamelCaseMotion'               " Allows creating mappings to navigate through camel/snake case
     Plug 'tpope/vim-surround'                 " Manipulate surrounding symbols
     Plug 'ctrlpvim/ctrlp.vim'                 " Fuzzy finder [:CtrlP]
     Plug 'raimondi/delimitmate'               " Auto closing of quotes, parenthesis and brackets
     Plug 'jiangmiao/auto-pairs'               " Insert or delete brackets, parens, quotes in pair
+    Plug 'michaeljsmith/vim-indent-object'    " Allows selection of blocks by indentation
 
     " Syntax Highlight and Code Style
     Plug 'dense-analysis/ale'                 " Async Lint Engine
