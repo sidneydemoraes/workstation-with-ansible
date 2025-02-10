@@ -63,15 +63,16 @@
     - obsidian
   include_role:
     name: common
-    tasks_from: download_and_install_apt_package
+    tasks_from: download_and_install_package_from_github
     apply:
       tags:
         - office
+        - base
         - obsidian
   vars:
     package:
       name: Obsidian
-      url: "{{ obsidian_url }}"
+      repo: "obsidianmd/obsidian-releases"
 
 - name: Install Gimp
   tags:
