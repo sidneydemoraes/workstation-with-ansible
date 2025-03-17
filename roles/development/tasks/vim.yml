@@ -1,12 +1,12 @@
 - name: Install and setup Vim
-  tags: 
+  tags:
+    - default
     - dev
-    - base
     - vim
   block:
     - name: Install package
       become: yes
-      apt: 
+      apt:
         name: "{{ item }}"
         state: latest
       with_items:

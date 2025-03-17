@@ -1,5 +1,6 @@
 - name: Preparing installation of Java and JDK
-  tags: 
+  tags:
+    - default
     - dev
     - java
   block:

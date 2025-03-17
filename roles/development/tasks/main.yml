@@ -1,35 +1,36 @@
 - name: Install Vim
   tags:
+    - default
     - dev
-    - base
     - vim
   include_tasks: vim.yml
 
 - name: Install Tmate and Tmux
   tags:
+    - default
     - dev
-    - base
     - tmux
     - tmate
   include_tasks: tmux.yml
 
 - name: Install VSCode
-  tags: 
+  tags:
+    - default
     - dev
-    - base
     - vscode
   include_tasks: vscode.yml
 
 - name: Install Java
-  tags: 
+  tags:
+    - default
     - dev
     - java
   include_tasks: java.yml
 
 - name: Install Python
-  tags: 
+  tags:
+    - default
     - dev
-    - base
     - python
   include_tasks: python.yml
 
@@ -40,14 +41,14 @@
   include_tasks: node.yml
 
 - name: Install LocalWP
-  tags: 
+  tags:
     - dev
     - localwp
   include_role:
     name: common
     tasks_from: download_and_install_apt_package
     apply:
-      tags: 
+      tags:
         - dev
         - localwp
   vars:
@@ -56,13 +57,14 @@
       url: "{{ localwp_url }}"
 
 - name: Install Docker
-  tags: 
+  tags:
+    - default
     - dev
     - docker
   include_tasks: docker.yml
 
 - name: Install Virtualbox
-  tags: 
+  tags:
     - dev
     - virtualbox
   include_tasks: virtualbox.yml
@@ -82,4 +84,3 @@
     package:
       name: GPick
       id: gpick
-

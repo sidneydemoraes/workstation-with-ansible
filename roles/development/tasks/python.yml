@@ -1,7 +1,7 @@
 - name: Installing and setting up Python
-  tags: 
+  tags:
+    - default
     - dev
-    - base
     - python
   block:
     - name: Install dependencies
@@ -79,9 +79,7 @@
 
 
 - name: Installing UV
-  tags: 
+  tags:
     - dev
-    - base
     - python
   shell: "curl -LsSf https://astral.sh/uv/install.sh | sh"
-

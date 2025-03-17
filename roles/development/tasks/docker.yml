@@ -1,5 +1,6 @@
 - name: Preparing installation and setup of Docker
-  tags: 
+  tags:
+    - default
     - dev
     - docker
   become: yes
@@ -10,10 +11,10 @@
         state: absent
       vars:
         packages:
-          - docker 
-          - docker-engine 
-          - docker.io 
-          - containerd 
+          - docker
+          - docker-engine
+          - docker.io
+          - containerd
           - runc
 
     - name: Installing pre requisites
@@ -45,7 +46,7 @@
         state: latest
       vars:
         packages:
-          - docker-ce 
-          - docker-ce-cli 
+          - docker-ce
+          - docker-ce-cli
           - containerd.io
           - docker-compose-plugin

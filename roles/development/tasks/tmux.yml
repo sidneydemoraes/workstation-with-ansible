@@ -1,7 +1,7 @@
 - name: Install and setup Tmux and Tmate
   tags:
+    - default
     - dev
-    - base
     - tmux
     - tmate
   block:
