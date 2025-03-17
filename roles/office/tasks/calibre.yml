@@ -1,14 +1,16 @@
 - name: Install Calibre
-  tags: 
+  tags:
+    - default
     - office
     - calibre
   become: yes
   shell: "wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin"
 
 - name: Import configuration files
-  tags: 
-      - office
-      - ebooks
+  tags:
+    - default
+    - office
+    - ebooks
   git:
     repo: "git@gitlab.com:sidneydemoraes/calibre-backup.git"
     dest: "{{ calibre_config_dest }}"
@@ -17,11 +19,9 @@
 
 - name: Import PDF 2 Kindle Resizer
   tags:
-    - office
     - k2pdf
   copy:
     src: "k2pdfopt"
     dest: "{{ ansible_user_dir }}/.local/bin"
     force: yes
     mode: 0744
-

@@ -1,19 +1,21 @@
 - name: Install Calibre
-  tags: 
+  tags:
+    - default
     - office
     - calibre
     - ebooks
+    - k2pdf
   include_tasks: calibre.yml
 
 - name: Install LibreOffice
-  tags: 
+  tags:
     - office
     - libreoffice
-  include_role: 
+  include_role:
     name: common
     tasks_from: install_apt_package
     apply:
-      tags: 
+      tags:
         - office
         - libreoffice
   vars:
@@ -23,17 +25,17 @@
       apt_repo: "ppa:libreoffice/ppa"
 
 - name: Install Google Drive folder sync
-  tags: 
+  tags:
+    - default
     - office
-    - base
     - gdrive
   include_role:
     name: common
     tasks_from: install_apt_package
     apply:
-      tags: 
+      tags:
+        - default
         - office
-        - base
         - gdrive
   vars:
     package:
@@ -41,14 +43,14 @@
       id: rclone
 
 - name: Install HTMLDoc
-  tags: 
+  tags:
     - office
     - htmldoc
   include_role:
     name: common
     tasks_from: install_apt_package
     apply:
-      tags: 
+      tags:
         - office
         - htmldoc
   vars:
@@ -58,16 +60,16 @@
 
 - name: Install Obsidian
   tags:
+    - default
     - office
-    - base
     - obsidian
   include_role:
     name: common
     tasks_from: download_and_install_package_from_github
     apply:
       tags:
+        - default
         - office
-        - base
         - obsidian
   vars:
     package:
@@ -76,14 +78,15 @@
 
 - name: Install Gimp
   tags:
+    - default
     - office
-    - base
     - gimp
   include_role:
     name: common
     tasks_from: install_apt_package
     apply:
       tags:
+        - default
         - office
         - gimp
   vars:
@@ -93,6 +96,7 @@
 
 - name: Install VLC
   tags:
+    - default
     - office
     - vlc
   include_role:
@@ -100,10 +104,10 @@
     tasks_from: install_apt_package
     apply:
       tags:
+        - default
         - office
         - vlc
   vars:
     package:
       name: VLC
       id: vlc
-
