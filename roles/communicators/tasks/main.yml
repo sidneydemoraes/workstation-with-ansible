@@ -1,5 +1,6 @@
 - name: Download and install Telegram
-  tags: 
+  tags:
+    - default
     - comm
     - telegram
   block:
@@ -27,14 +28,16 @@
     check_mode: no
 
 - name: Install Discord
-  tags: 
+  tags:
+    - default
     - comm
     - discord
-  include_role: 
+  include_role:
     name: common
     tasks_from: download_and_install_apt_package
     apply:
-      tags: 
+      tags:
+        - default
         - comm
         - discord
   vars:
@@ -73,4 +76,3 @@
     package:
       name: Skype
       id: skype
-
