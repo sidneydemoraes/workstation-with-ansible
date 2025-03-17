@@ -1,5 +1,5 @@
 - name: Installing and setting up Waydroid
-  tags: android
+  tags: waydroid
   become: yes
   block:
     - name: Install dependencies
@@ -23,7 +23,7 @@
           tags: android
       vars:
         package:
-          name: Waydroid 
+          name: Waydroid
           id: waydroid
 
 - name: Install Anbox with GAPPS
