@@ -11,7 +11,7 @@
         state: latest
       with_items:
         - vim
-        - vim_gtk
+        - vim-gtk3
 
     - name: Copy configuration file
       copy:
