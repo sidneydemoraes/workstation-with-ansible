@@ -1,6 +1,6 @@
 # Ansible playbook to setup NVidia drivers
 # Last update: 2021.11.24 17.33
-- hosts: all
+- hosts: localhost
   tags: nvidia
   become: yes
 
