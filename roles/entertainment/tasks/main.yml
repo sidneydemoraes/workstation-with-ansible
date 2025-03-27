@@ -3,18 +3,6 @@
     - default
     - entertainment
     - spotify
-  include_role:
-    name: common
-    tasks_from: install_apt_package
-    apply:
-      tags:
-        - default
-        - entertainment
-        - spotify
-  vars:
-    package:
-      name: "Spotify"
-      key_id: "{{ spotify_key_id }}"
-      key_url: "{{ spotify_key_url }}"
-      apt_repo: "{{ spotify_apt_repo }}"
-      id: "{{ spotify_id }}"
+  snap:
+    name: spotify
+    state: latest
