@@ -1,21 +1,26 @@
-- name: Install Calibre
+- name: Installing Calibre
   tags:
     - default
     - office
     - calibre
-  become: yes
-  shell: "wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin"
+  block:
+  - name: Preparing installation
+    become: yes
+    apt:
+      name: libxcb-cursor0
+      state: latest
 
-- name: Import configuration files
-  tags:
-    - default
-    - office
-    - ebooks
-  git:
-    repo: "git@gitlab.com:sidneydemoraes/calibre-backup.git"
-    dest: "{{ calibre_config_dest }}"
-    clone: yes
-  ignore_errors: yes
+  - name: Install Calibre
+    become: yes
+    shell: "wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin"
+
+  - name: Import configuration files
+    git:
+      repo: "git@gitlab.com:sidneydemoraes/calibre-backup.git"
+      dest: "{{ calibre_config_dest }}"
+      clone: yes
+      depth: 1
+    ignore_errors: yes
 
 - name: Import PDF 2 Kindle Resizer
   tags:
