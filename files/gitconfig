@@ -1,5 +1,5 @@
 # Last update:
-# 220214.1007 - Sidney de Moraes
+# 250327.1024 - Sidney de Moraes
 
 [user]
 	name = Sid
@@ -7,6 +7,8 @@
 [core]
 	autocrlf = input
 	filemode = false
+[init]
+  defaultBranch = main
 [alias]
 	acommit = "!f(){ git add . && git commit -m \"$1\"; }; f"
 	head = reset --hard HEAD
@@ -15,7 +17,7 @@
 	ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p --name-only
 	la = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
 	clearcache = "!f() { param=${1:-10} && git fetch --depth=\"$param\" && git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=all }; f"
-	latest = "!git push origin :latest && git tag -fa latest -m \"Latest version\"" 
+	latest = "!git push origin :latest && git tag -fa latest -m \"Latest version\""
 [push]
 	default = simple
 [log]
