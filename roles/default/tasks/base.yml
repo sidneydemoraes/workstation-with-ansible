@@ -33,7 +33,7 @@
         - tar
         - wget
         - gparted
-        - bacula-console-qt
+        - bat
 
 - name: Base configurations
   tags:
