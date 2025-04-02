@@ -18,6 +18,7 @@
 	la = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
 	clearcache = "!f() { param=${1:-10} && git fetch --depth=\"$param\" && git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=all }; f"
 	latest = "!git push origin :latest && git tag -fa latest -m \"Latest version\""
+	first-push = "!sh -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD\")"
 [push]
 	default = simple
 [log]
