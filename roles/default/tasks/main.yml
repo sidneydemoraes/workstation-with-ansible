@@ -62,3 +62,20 @@
     - base
     - wine
   include_tasks: wine.yml
+
+- name: Install Transmission
+  tags:
+    - default
+    - base
+    - transmission
+  include_role:
+    name: common
+    tasks_from: install_apt_package
+    apply:
+      tags:
+        - default
+        - base
+        - transmission
+  vars:
+    package:
+      id: transmission
