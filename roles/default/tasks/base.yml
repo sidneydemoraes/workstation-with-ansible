@@ -35,6 +35,7 @@
         - gparted
         - bat
         - xclip
+        - aria2
 
 - name: Base configurations
   tags:
