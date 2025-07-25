@@ -1,3 +1,4 @@
 gog_repo: "sharkwouter/minigalaxy"
 epic_repo: "Heroic-Games-Launcher/HeroicGamesLauncher"
-steam_url: "https://cdn.akamai.steamstatic.com/client/installer/steam.deb"
+steam_url: "https://repo.steampowered.com/steam/archive/precise/steam_latest.deb"
+
