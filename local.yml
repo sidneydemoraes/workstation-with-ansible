@@ -8,21 +8,31 @@
   pre_tasks:
     - name: Update apt cache
       become: yes
-      apt: 
+      apt:
         update_cache: yes
       changed_when: no
 
   roles:
-    - default
-    - security
-    - office
-    - communicators
-    - job
-    - development
-    - support
-    - android
-    - games
-    - entertainment
+    - role: default
+      ignore_errors: true
+    - role: security
+      ignore_errors: true
+    - role: office
+      ignore_errors: true
+    - role: communicators
+      ignore_errors: true
+    - role: job
+      ignore_errors: true
+    - role: development
+      ignore_errors: true
+    - role: support
+      ignore_errors: true
+    - role: android
+      ignore_errors: true
+    - role: games
+      ignore_errors: true
+    - role: entertainment
+      ignore_errors: true
 
 
   # Clean Up

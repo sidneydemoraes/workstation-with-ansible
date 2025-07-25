@@ -5,4 +5,4 @@
     - spotify
   snap:
     name: spotify
-    state: latest
+    state: present

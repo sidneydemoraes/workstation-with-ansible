@@ -22,6 +22,8 @@
         update_cache: yes
       with_items:
         - software-properties-common
+        - vim
+        - vim-gtk3
         - atop
         - cpulimit
         - curl

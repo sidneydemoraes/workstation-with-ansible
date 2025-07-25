@@ -4,23 +4,16 @@
     - dev
     - java
   block:
-    - name: Check if sdkman is installed
-      shell: test -d {{sdkman_folder}} && echo "yes" || echo "no"
-      register: is_sdkman_installed
+    - name: Installing SDKMan
+      shell: "curl -s {{sdkman_url }} | bash executable=/bin/bash"
+      ignore_errors: false
 
-    - name: Should I install SDKMan?
-      when : is_sdkman_installed.stdout == "no"
-      block:
-        - name: Installing SDKMan
-          shell: "curl -s {{sdkman_script_install_url }}" | bash executable=/bin/bash
+    - name: Get latest OpenJDK version
+      shell: "source {{ ansible_user_dir }}/.sdkman/bin/sdkman-init.sh && sdk list java | grep -e '-open' | head -1 | awk '{ print $(NF) }'"
+      register: openjdk_latest
 
-        - name: Get latest OpenJDK version
-          shell: "source {{ ansible_user_dir }}/.sdkman/bin/sdkman-init.sh && sdk list java | grep -e '-open' | head -1 | awk '{ print $(NF) }'"
-          register: openjdk_latest
+    - name: "Install OpenJDK version {{ openjdk_latest }}"
+      shell: "source {{ ansible_user_dir }}/.sdkman/bin/sdkman-init.sh && sdk install java {{ openjdk_latest }}"
 
-        - name: "Install OpenJDK version {{ openjdk_latest }}"
-          shell: "source {{ ansible_user_dir }}/.sdkman/bin/sdkman-init.sh && sdk install java {{ openjdk_latest }}"
-
-        - name: Setup OpenJDK as default Java version
-          shell: "source {{ ansible_user_dir }}/.sdkman/bin/sdkman-init.sh && sdk default java {{ openjdk_latest }}"
-
+    - name: Setup OpenJDK as default Java version
+      shell: "source {{ ansible_user_dir }}/.sdkman/bin/sdkman-init.sh && sdk default java {{ openjdk_latest }}"
