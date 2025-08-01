@@ -3,6 +3,6 @@
     - default
     - entertainment
     - spotify
-  snap:
+  community.general.snap:
     name: spotify
     state: present
