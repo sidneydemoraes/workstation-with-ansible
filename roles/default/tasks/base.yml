@@ -36,6 +36,8 @@
         - bat
         - xclip
         - aria2
+        - 7zip
+        - 7zip-rar
 
 - name: Base configurations
   tags:
