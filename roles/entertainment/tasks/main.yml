@@ -3,6 +3,14 @@
     - default
     - entertainment
     - spotify
-  community.general.snap:
-    name: spotify
-    state: present
+  include_role:
+    name: common
+    tasks_from: install_snap_package
+    apply:
+      tags:
+        - default
+        - entertainment
+        - spotify
+  vars:
+    package:
+      id: spotify
