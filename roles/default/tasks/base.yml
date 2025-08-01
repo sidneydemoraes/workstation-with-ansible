@@ -29,8 +29,6 @@
         - curl
         - git
         - htop
-        - p7zip-full
-        - p7zip-rar
         - screen
         - tar
         - wget
