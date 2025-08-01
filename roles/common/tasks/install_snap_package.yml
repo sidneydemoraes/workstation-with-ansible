@@ -1,8 +1,7 @@
 - name: "Install {{ package.name }}"
   become: yes
-  snap:
+  community.general.snap:
     name: "{{ package.id }}"
     state: "{{ package.state | default('present', true) }}"
     channel: "{{ package.channel | default('stable', true) }}"
     classic: "{{ package.classic | default('no', true) }}"
-
