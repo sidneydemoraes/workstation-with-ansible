@@ -16,9 +16,9 @@
       name: Firejail
       id: "{{ item }}"
       apt_repo: "ppa:deki/firejail"
-  with_items:
-    - firejail
-    - firejail-profiles
+    with_items:
+      - firejail
+      - firejail-profiles
 
 - name: Install NordVPN
   tags:
@@ -26,7 +26,20 @@
     - security
     - vpn
   become: yes
-  shell: "curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh | bash"
+  block:
+    - name: Baixar script de instalação do NordVPN
+      get_url:
+        url: https://downloads.nordcdn.com/apps/linux/install.sh
+        dest: /tmp/nordvpn_install.sh
+        mode: '0755'
+    - name: Executar instalação do NordVPN GUI
+      shell: /tmp/nordvpn_install.sh -p nordvpn-gui
+      args:
+        executable: /bin/bash
+    - name: Remover script de instalação
+      file:
+        path: /tmp/nordvpn_install.sh
+        state: absent
 
 
 - name: Install Tor Browser
