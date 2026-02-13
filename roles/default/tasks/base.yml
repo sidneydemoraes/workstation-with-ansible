@@ -108,6 +108,7 @@
     - default
     - base
     - snap
+    - 7zip
   apt:
     name: snapd
     state: latest
